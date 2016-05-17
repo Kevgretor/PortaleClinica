@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
+import javax.persistence.PreUpdate;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,6 +56,34 @@ import javax.persistence.TemporalType;
    public Long getId() {
         return id;
     }
+   
+   public Utente getPaziente() {
+	   return this.utente;
+   }
+   
+   public void setPaziente(Utente paziente) {
+	   this.utente = paziente;
+   }
+   
+   public Medico getMedico() {
+	   return this.medico;
+   }
+   
+   public void setMedico(Medico medico) {
+	   this.medico = medico;
+   }
+   
+   public Date getDataEsame() {
+	   return this.dataEsame;
+   }
+   
+   public void setDataEsame(Date dataEsame) {
+	   this.dataEsame = dataEsame;
+   }
+   
+   public Date getDataPrenotazione() {
+	   return this.dataPrenotazione;
+   }
 
     public boolean equals(Object obj) {
         Esame esame = (Esame)obj;
@@ -67,10 +96,18 @@ import javax.persistence.TemporalType;
 
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("Product"); 
+        sb.append("Esame"); 
         sb.append("{id=").append(id);
+        sb.append("{paziente=").append(utente.toString());
+        sb.append("{medico=").append(medico.toString());
+        sb.append("{data esame=").append(dataEsame.toString());
         sb.append("}\n");
         return sb.toString();
+    }
+    
+    @PreUpdate
+    protected void onUpdate() {
+    	this.dataPrenotazione = new Date();
     }
 	
 }

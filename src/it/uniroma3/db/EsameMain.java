@@ -24,6 +24,7 @@ public class EsameMain {
 		
 		
 		Esame es = new Esame(u, medico, new Date());
+		
 
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();

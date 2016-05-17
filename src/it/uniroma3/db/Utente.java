@@ -97,7 +97,7 @@ import javax.persistence.SequenceGenerator;
 
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("Product"); 
+        sb.append("Utente"); 
         sb.append("{id=").append(id); 
         sb.append(", name='").append(nome); 
         sb.append(", cognome=").append(cognome); 
