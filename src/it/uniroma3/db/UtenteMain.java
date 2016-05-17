@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class UtenteMain {
 	
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("medici-unit");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
 		EntityManager em = emf.createEntityManager();
 
 		Utente u = new Utente("Rosaria", "Rossi", "rosaria.rossi", "pass", "paziente");

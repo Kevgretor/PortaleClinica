@@ -21,8 +21,8 @@ import javax.persistence.SequenceGenerator;
 	private String nome;
 
 	private String cognome;
-	@Column(length = 2000)
 
+	@Column(unique=true, nullable=false)
 	private String username;
 	
 	private String password;
@@ -46,11 +46,11 @@ import javax.persistence.SequenceGenerator;
         return id;
     }
 
-    public String getName() {
+    public String getNome() {
         return this.nome;
     }
 
-    public void setName(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

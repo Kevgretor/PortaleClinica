@@ -40,11 +40,11 @@ import javax.persistence.SequenceGenerator;
         return id;
     }
 
-    public String getName() {
+    public String getNome() {
         return this.nome;
     }
 
-    public void setName(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -65,7 +65,7 @@ import javax.persistence.SequenceGenerator;
     }
 
     public boolean equals(Object obj) {
-        Utente medico = (Utente)obj;
+        Medico medico = (Medico)obj;
         return this.getId().equals(medico.getId());
     }
 
