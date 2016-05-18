@@ -1,4 +1,4 @@
-package it.uniroma3.db;
+package it.uniroma3.persistence.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

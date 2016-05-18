@@ -2,13 +2,13 @@ package it.uniroma3.action;
 
 import java.util.List;
 
-import it.uniroma3.db.TipologiaEsame;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
+
+import it.uniroma3.persistence.model.TipologiaEsame;
 
 public class GetTipologiaEsame implements Action {
 

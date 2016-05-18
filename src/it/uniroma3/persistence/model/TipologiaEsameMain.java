@@ -1,36 +1,24 @@
-package it.uniroma3.db;
+package it.uniroma3.persistence.model;
 
-import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class EsameMain {
+public class TipologiaEsameMain {
 	
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
 		EntityManager em = emf.createEntityManager();
 
 		//Creazione Medico
-		Medico medico = new Medico();
-		medico.setNome("Ciccio");
-		medico.setCognome("Cicciarelli");
-		medico.setSpecializzazione("Dietologo");
-		
-		//Creazione Paziente
-		Utente u = new Utente("Obesa", "McDowell", "obesa2", "pass", "paziente");
-		
-		
-		Esame es = new Esame(u, medico, new Date());
+		TipologiaEsame te = new TipologiaEsame("Esame Prostata", "Un minuzioso controllo della prostata", 19.99f, "nessuno", "risultato");
 		
 
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.persist(u);
-		em.persist(medico);
-		em.persist(es);
+		em.persist(te);
 		tx.commit();
 
 		em.close();

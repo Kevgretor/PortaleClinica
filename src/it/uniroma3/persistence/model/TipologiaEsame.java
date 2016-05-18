@@ -1,4 +1,4 @@
-package it.uniroma3.db;
+package it.uniroma3.persistence.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +8,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 import javax.persistence.SequenceGenerator;
 
-	@Entity
-	@NamedQuery(name = "findAllTipologiaEsami", query = "SELECT t FROM TipologiaEsame t")
+	@Entity(name="tipologia_di_esame")
+	@NamedQuery(name = "findAllTipologiaEsami", query = "SELECT t FROM tipologia_di_esame t")
 	public class TipologiaEsame {
         
 	@Id
@@ -26,6 +26,7 @@ import javax.persistence.SequenceGenerator;
 	
 	private String prerequisiti;
 	
+	@Column(name="indicatore_risultati")
 	private String indicatoreRisultati;
 	
 	public TipologiaEsame() {

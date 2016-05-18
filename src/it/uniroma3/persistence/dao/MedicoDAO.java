@@ -1,23 +1,29 @@
-package it.uniroma3.db;
+package it.uniroma3.persistence.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import it.uniroma3.persistence.model.Medico;
 
-public class UtenteMain {
+public class MedicoDAO {
 	
-	public static void main(String[] args) {
+	public MedicoDAO() {
+		
+	}
+	
+	public void insertMedico(Medico medico)
+	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
 		EntityManager em = emf.createEntityManager();
-
-		Utente u = new Utente("Rosaria", "Rossi", "rosaria.rossi", "pass", "paziente");
 		EntityTransaction tx = em.getTransaction();
+		
 		tx.begin();
-		em.persist(u);
+		em.persist(medico);
 		tx.commit();
-
+		
 		em.close();
 		emf.close();
 	}
+
 }
