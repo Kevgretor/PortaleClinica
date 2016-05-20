@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
@@ -34,11 +35,11 @@ import javax.persistence.TemporalType;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPrenotazione;
 	
-	@OneToOne
-	@JoinColumn(name = "id_medico")
+	@ManyToOne
+	@JoinColumn(name = "id_medico", nullable = true)
 	private Medico medico;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_paziente")
 	private Utente utente;
 	

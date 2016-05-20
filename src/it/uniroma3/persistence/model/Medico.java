@@ -28,7 +28,7 @@ import javax.persistence.SequenceGenerator;
 	public Medico() {
     }
 
-	public Medico(String nome, String cognome, String specializzazione, String code) {
+	public Medico(String nome, String cognome, String specializzazione) {
         this.nome = nome;
         this.cognome = cognome;
         this.specializzazione = specializzazione;
@@ -72,7 +72,7 @@ import javax.persistence.SequenceGenerator;
     public int hashCode() {
          return this.getId().hashCode();
     }
-
+/*
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("Medico"); 
@@ -82,6 +82,6 @@ import javax.persistence.SequenceGenerator;
         sb.append(", specializzazione='").append(specializzazione); 
         sb.append("}\n");
         return sb.toString();
-    }
+    }*/
 	
 }
