@@ -1,11 +1,8 @@
 package it.uniroma3.controller;
 
-import it.uniroma3.persistence.facade.EsameFacade;
-import it.uniroma3.persistence.model.Esame;
-import it.uniroma3.persistence.model.Medico;
+import it.uniroma3.persistence.facade.UtenteFacade;
 import it.uniroma3.persistence.model.Utente;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,72 +10,77 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
-public class EsameController {
+public class UtenteController {
 	
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	private Date dataEsame;
-	private Medico medico;
+	private String nome;
+	private String cognome;
+	private String username;
+	private String password;
+	private String role;
 	private Utente utente;
-	private Esame esame;
-	private List<Esame> esami;
+	private List<Utente> utenti;
 	
 	@EJB
-	private EsameFacade esameFacade;
+	private UtenteFacade utenteFacade;
 	
-	public String createEsame() {
-		this.esame = esameFacade.createEsame(utente, medico, dataEsame);
-		return "esame"; 
+	public String createPaziente() {
+		this.utente = utenteFacade.createUtente(nome, cognome, username, password, "paziente");
+		return "utente_creato"; 
 	}
 	
-	public String findEsame()
-	{
-		this.esame = esameFacade.getEsame(id);
-		return "esame";
+	public String createAmministratore() {
+		this.utente = utenteFacade.createUtente(nome, cognome, username, password, "amministratore");
+		return "amministratore_creato"; 
 	}
 	
-	public String findEsame(Long id)
+	public String findUtente()
 	{
-		this.esame = esameFacade.getEsame(id);
-		return "esame";
+		this.utente = utenteFacade.getUtente(id);
+		return "utente_dettagli";
 	}
 	
-	public String findEsameDiUtente(Long id)
+	public String findUtente(Long id)
 	{
-		this.esami = esameFacade.getEsamiByUtente(id);
-		return "esami_utente";
+		this.utente = utenteFacade.getUtente(id);
+		return "utente_dettagli";
 	}
 	
-	public String listEsami()
+	public String findUtente(String username)
 	{
-		this.esami = esameFacade.getAllEsami();
-		return "esami";
+		this.utente = utenteFacade.getUtenteByUsername(username);
+		return "utente_dettagli";
 	}
-	
-	public Long getId()
+
+	public String listUtenti()
 	{
+		this.utenti = utenteFacade.getAllUtenti();
+		return "utente_list";
+	}
+
+	public Long getId() {
 		return id;
 	}
-	
-	public void setId(Long id)
-	{
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Date getDataEsame() {
-		return dataEsame;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDataEsame(Date dataEsame) {
-		this.dataEsame = dataEsame;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Medico getMedico() {
-		return medico;
+	public String getCognome() {
+		return cognome;
 	}
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 
 	public Utente getUtente() {
@@ -89,17 +91,27 @@ public class EsameController {
 		this.utente = utente;
 	}
 
-	public Esame getEsame() {
-		return esame;
+	public List<Utente> getUtenti() {
+		return utenti;
 	}
 
-	public void setEsame(Esame esame) {
-		this.esame = esame;
+	public void setUtenti(List<Utente> utenti) {
+		this.utenti = utenti;
 	}
 
-	public List<Esame> getEsami() {
-		return esami;
+	public String getUsername() {
+		return username;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
 	
 	
 	

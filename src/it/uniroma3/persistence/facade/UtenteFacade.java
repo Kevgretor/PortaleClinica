@@ -8,8 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
+import it.uniroma3.persistence.model.Esame;
 import it.uniroma3.persistence.model.Medico;
 import it.uniroma3.persistence.model.Utente;
 
@@ -30,6 +32,17 @@ public class UtenteFacade {
 	{
 		Utente u = em.find(Utente.class, id);
 		return u;
+	}
+	
+	public Utente getUtenteByUsername(String username)
+	{
+		Utente utente = null;
+		Query q = em.createNativeQuery("SELECT * FROM utente WHERE username=:username", Utente.class);
+		q.setParameter("username", username);
+		List<Utente> risultati = q.getResultList();
+		if(!risultati.isEmpty())
+			utente = (Utente) q.getResultList().get(0);
+		return utente;
 	}
 	
 	public List<Utente> getAllUtenti() 

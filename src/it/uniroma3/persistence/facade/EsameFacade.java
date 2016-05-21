@@ -36,9 +36,10 @@ public class EsameFacade {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Esame> getEsamiByUtente(Utente u)
+	public List<Esame> getEsamiByUtente(Long id)
 	{
-		Query q = em.createNativeQuery("SELECT Esame WHERE u = Utente");
+		Query q = em.createNativeQuery("SELECT * FROM esame WHERE id_paziente=:id", Esame.class);
+		q.setParameter("id", id);
 		List<Esame> esame = q.getResultList();
 		return esame;
 	}
