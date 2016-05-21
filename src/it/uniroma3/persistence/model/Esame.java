@@ -36,8 +36,12 @@ import javax.persistence.TemporalType;
 	private Date dataPrenotazione;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_medico", nullable = true)
+	@JoinColumn(name = "id_medico", nullable = false)
 	private Medico medico;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_tipologiaesame", nullable = false)
+	private TipologiaEsame tipologiaEsame;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_paziente")
@@ -46,10 +50,12 @@ import javax.persistence.TemporalType;
 	public Esame() {
     }
 
-	public Esame(Utente utente, Medico medico, Date dataEsame) {
-        this.dataEsame = dataEsame;
+	public Esame(Utente utente, Medico medico, TipologiaEsame tipologiaEsame, Date dataEsame) {
+		this.dataEsame = dataEsame;
+		this.dataPrenotazione = new Date();
         this.utente = utente;
         this.medico = medico;
+        this.tipologiaEsame = tipologiaEsame;
 }
 
     //          Getters & Setters        
@@ -84,6 +90,14 @@ import javax.persistence.TemporalType;
    
    public Date getDataPrenotazione() {
 	   return this.dataPrenotazione;
+   }
+   
+   public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
+	   this.tipologiaEsame = tipologiaEsame;
+   }
+   
+   public TipologiaEsame getTipologiaEsame() {
+	   return this.tipologiaEsame;
    }
 
     public boolean equals(Object obj) {

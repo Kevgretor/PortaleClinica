@@ -14,6 +14,7 @@
 		<h:form>
 			<h:commandLink action="login.jsp" value="Accedi"
 					rendered="#{!login.loggedIn}" />
+					<h:outputText rendered="#{login.loggedIn}">Benvenuto ${login.username}</h:outputText>
 			<h:commandLink action="#{login.logout}" value="Esci"
 					rendered="#{login.loggedIn}" />
 		</h:form>
@@ -26,6 +27,9 @@
 			<li><h:commandLink
 					action="#{tipologiaEsameController.listTipologiaEsame}"
 					value="Consulta Tipologie di Esame" /></li>
+					<li><h:commandLink
+					action="#{esameCreatorController.newEsame}"
+					value="Crea nuovo esame" /></li>
 		</h:form>
 		<br>
 		<br>

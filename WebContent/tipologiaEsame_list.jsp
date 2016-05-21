@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Tipologia Esami</title>
+<title>Esami Offerti</title>
 </head>
 <body>
 	<f:view>
-		<h1>Tipologia Esami</h1>
+		<h1>Tipologia degli esami offerti</h1>
 		<h:form>
 			<table>
 				<tr>

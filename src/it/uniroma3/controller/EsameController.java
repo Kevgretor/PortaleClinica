@@ -1,8 +1,12 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.persistence.facade.EsameFacade;
+import it.uniroma3.persistence.facade.MedicoFacade;
+import it.uniroma3.persistence.facade.TipologiaEsameFacade;
+import it.uniroma3.persistence.facade.UtenteFacade;
 import it.uniroma3.persistence.model.Esame;
 import it.uniroma3.persistence.model.Medico;
+import it.uniroma3.persistence.model.TipologiaEsame;
 import it.uniroma3.persistence.model.Utente;
 
 import java.util.Date;
@@ -11,6 +15,8 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
 
 @ManagedBean
 public class EsameController {
@@ -21,26 +27,30 @@ public class EsameController {
 	private Medico medico;
 	private Utente utente;
 	private Esame esame;
+	private TipologiaEsame tipologiaEsame;
 	private List<Esame> esami;
 	
 	@EJB
 	private EsameFacade esameFacade;
 	
 	public String createEsame() {
-		this.esame = esameFacade.createEsame(utente, medico, dataEsame);
+		this.esame = esameFacade.createEsame(utente, medico, tipologiaEsame, dataEsame);
 		return "esame"; 
 	}
 	
+	public TipologiaEsame getTipologiaEsame() {
+		return tipologiaEsame;
+	}
+
+	public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
+		this.tipologiaEsame = tipologiaEsame;
+	}
+
+
 	public String findEsame()
 	{
 		this.esame = esameFacade.getEsame(id);
-		return "esame";
-	}
-	
-	public String findEsame(Long id)
-	{
-		this.esame = esameFacade.getEsame(id);
-		return "esame";
+		return "esame_dettagli";
 	}
 	
 	public String findEsameDiUtente(Long id)
@@ -99,6 +109,10 @@ public class EsameController {
 
 	public List<Esame> getEsami() {
 		return esami;
+	}
+
+	public void setEsami(List<Esame> esami) {
+		this.esami = esami;
 	}
 	
 	

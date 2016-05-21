@@ -18,7 +18,7 @@ ${login.messaggio }
                      requiredMessage="username is mandatory"
                      id="username"/> <h:message for="username" />
 	</div> 
-    <div>password: <h:inputText value="#{login.password}" 
+    <div>password: <h:inputSecret value="#{login.password}" 
                      required="true"
                      requiredMessage="password is mandatory"
                      id="password"/> <h:message for="password" />

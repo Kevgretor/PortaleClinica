@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import it.uniroma3.persistence.model.Esame;
 import it.uniroma3.persistence.model.Medico;
+import it.uniroma3.persistence.model.TipologiaEsame;
 import it.uniroma3.persistence.model.Utente;
 
 @Stateless
@@ -22,9 +23,9 @@ public class EsameFacade {
 	@PersistenceContext(unitName = "clinica-unit")
 	private EntityManager em;
 	
-	public Esame createEsame(Utente utente, Medico medico, Date dataEsame)
+	public Esame createEsame(Utente utente, Medico medico, TipologiaEsame tipologiaEsame, Date dataEsame)
 	{
-		Esame e = new Esame(utente, medico, dataEsame);
+		Esame e = new Esame(utente, medico, tipologiaEsame, dataEsame);
 		em.persist(e);
 		return e;
 	}

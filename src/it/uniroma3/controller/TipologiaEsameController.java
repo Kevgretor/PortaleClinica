@@ -35,12 +35,7 @@ public class TipologiaEsameController {
 		this.te = tipologiaEsameFacade.getTipologiaEsame(id);
 		return "tipologiaEsame_dettagli";
 	}
-	
-	public String findEsame(Long id)
-	{
-		this.te = tipologiaEsameFacade.getTipologiaEsame(id);
-		return "tipologiaEsame_dettagli";
-	}
+
 
 	public String listTipologiaEsame()
 	{
