@@ -1,23 +1,25 @@
 package it.uniroma3.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
+import it.uniroma3.helper.Util;
 import it.uniroma3.persistence.facade.UtenteFacade;
 import it.uniroma3.persistence.model.Utente;
 
 import javax.ejb.EJB;
-import javax.enterprise.inject.Produces;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @SessionScoped
-public class Login {
+public class Login implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String username;
 	private String password;
@@ -25,11 +27,10 @@ public class Login {
 	private Utente utente;
 	private String messaggio;
 	
-	
 	@EJB
 	UtenteFacade utenteFacade;
 	
-	public String login() 
+	public void login() 
 	{		
 		Utente utente = utenteFacade.getUtenteByUsername(username);
 		String psw = password;
@@ -37,18 +38,26 @@ public class Login {
 		if(utente==null)
 		{
 			messaggio = "*username errato";
-			return "login";
+			return;
 		}
 		if(utente.getPassword().equals(psw))
 		{
 			this.utente = utente;
-			return "index";
+			HttpSession session = Util.getSession();
+	        session.setAttribute("username", username);
+	        session.setAttribute("role", utente.getRole());
+	        
+	        this.messaggio = null;
+	        
+			return; // "index";
 		}
 		messaggio = "*password errata";
-		return "login";
+		//return "login";
 	}
 	public void logout() 
 	{
+		HttpSession session = Util.getSession();
+	    session.invalidate();
 		utente = null;
 	}
 
