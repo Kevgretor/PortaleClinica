@@ -9,7 +9,13 @@
 <h:head>
 </h:head>
 <h:body>
-	<ui:composition template="/layout.xhtml">
-</ui:composition>
+			<h:form class="form-inline">
+				<h:commandLink
+					action="#{tipologiaEsameController.listTipologiaEsame}">Consulta Tipologie Esami</h:commandLink>
+					<h:commandLink
+					action="#{tipologiaEsameController.findTipologiaEsame(id)}">
+					<f:param name="id" value="1" />
+					Consulta ID 1 </h:commandLink>
+			</h:form>
 </h:body>
 </html>

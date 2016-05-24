@@ -3,16 +3,22 @@ package it.uniroma3.controller;
 import it.uniroma3.persistence.facade.TipologiaEsameFacade;
 import it.uniroma3.persistence.model.TipologiaEsame;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.flow.FlowScoped;
 
-@ManagedBean
+@ManagedBean 
+@SessionScoped
 public class TipologiaEsameController {
 	
-	@ManagedProperty(value="#{param.id}")
+	@ManagedProperty(value="#{id}")
 	private Long id;
 	private String nome;
 	private String descrizione;
@@ -30,17 +36,17 @@ public class TipologiaEsameController {
 		return "esame"; 
 	}
 	
-	public String findTipologiaEsame()
+	public String findTipologiaEsame(Long id)
 	{
 		this.te = tipologiaEsameFacade.getTipologiaEsame(id);
-		return "tipologiaEsame_dettagli";
+		return "tipologiaEsameDettagli";
 	}
 
 
 	public String listTipologiaEsame()
 	{
 		this.tesami = tipologiaEsameFacade.getAllTipologiaEsame();
-		return "tipologiaEsame_list";
+		return "tipologiaEsameList";
 	}
 	
 	public Long getId()

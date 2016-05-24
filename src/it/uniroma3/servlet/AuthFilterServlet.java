@@ -1,4 +1,4 @@
-package it.uniroma3.servlet;
+/*package it.uniroma3.servlet;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -32,11 +32,11 @@ public class AuthFilterServlet implements Filter {
             HttpSession ses = req.getSession(false);
             //  allow user to proccede if url is login.xhtml or user logged in or user is accessing any page in //public folder
             String reqURI = req.getRequestURI();
-            if ( reqURI.indexOf("/login.jsf") >= 0 || (ses != null && ses.getAttribute("username") != null)
-                                       /*|| reqURI.indexOf("/") >= 0 */|| reqURI.contains("javax.faces.resource") )
+            if ( reqURI.indexOf("/index.xhtml") >= 0 || (ses != null && ses.getAttribute("username") != null)
+                                       || reqURI.indexOf("/") >= 0 || reqURI.contains("javax.faces.resource") )
                    chain.doFilter(request, response);
             else   // user didn't log in but asking for a page that is not allowed so take user to login page
-                   res.sendRedirect(req.getContextPath() + "/login.jsf");  // Anonymous user. Redirect to login page
+                   res.sendRedirect(req.getContextPath() + "/index.xhtml");  // Anonymous user. Redirect to login page
       }
      catch(Throwable t) {
          System.out.println( t.getMessage());
@@ -47,4 +47,4 @@ public class AuthFilterServlet implements Filter {
     public void destroy() {
          
     }
-}
+}*/

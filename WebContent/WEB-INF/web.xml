@@ -7,35 +7,30 @@
   
   <context-param>
         <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-        <param-value>.jsp .xhtml</param-value>
+        <param-value>.xhtml</param-value>
   </context-param>
   
   <!-- Facelets pages will use the .xhtml extension -->
-  <!--
-  <context-param>
-      <param-name>javax.faces.FACELETS_VIEW_MAPPINGS</param-name>
-      <param-value>*.xhtml</param-value>
-  </context-param> 
-	-->
+ 
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   
-  <filter>
-  	<filter-name>AuthFilter</filter-name> <!-- mandatory -->
-  	<filter-class>it.uniroma3.servlet.AuthFilterServlet</filter-class> <!-- mandatory -->
-  </filter>
+  <!-- <filter>
+  	<filter-name>AuthFilter</filter-name> mandatory
+  	<filter-class>it.uniroma3.servlet.AuthFilterServlet</filter-class> mandatory
+  </filter> -->
   
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
+    <url-pattern>*.html</url-pattern>
   </servlet-mapping>
 
-  <filter-mapping>
+  <!-- <filter-mapping>
 	    <filter-name>AuthFilter</filter-name>
 	    <url-pattern>/amministrazione/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 	    
 </web-app>

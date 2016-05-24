@@ -1,35 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-</h:head> 
+	<link rel="stylesheet" type="text/css"
+		href="bootstrap/css/bootstrap.min.css" />
+</h:head>
 
-<h:body> 
-		<h:form styleClass="form-horizontal" rendered="#{!login.loggedIn}">
-		<h:outputLabel value="${login.messaggio}" styleClass="control-label col-sm-2"/>
-		<div class="form group">
-			<h:outputLabel value="Username:" styleClass="control-label col-sm-2"/>
-			<h:inputText value="#{login.username}" required="true" requiredMessage="campo obbligatorio" id="username"/>
-			<h:message for="username" />
-			
-			<h:outputLabel value="Password" />
-			<h:inputText value="#{login.password}" required="true" requiredMessage="campo obbligatorio" id="password"/>
-			<h:message for="password" />
+<h:body>
+	<div class="container">
+		<div class="row">
+			<div class="pull-right">
+				<h:form class="form-inline" rendered="#{!login.loggedIn}">
+					<h:outputLabel value="${login.messaggio}"
+						styleClass="control-label col-sm-2" />
+					<div class="form-group has-feedback">
+						<h:outputLabel class="sr-only" for="username">Username</h:outputLabel>
+						<h:inputText type="text" class="form-control"
+							value="#{login.username}" required="true"
+							requiredMessage="campo obbligatorio" id="username"
+							a:placeholder="Username" />
+						<h:message for="username" />
+						<h:outputLabel class="sr-only" for="username">Password</h:outputLabel>
+						<h:inputSecret type="password" class="form-control"
+							value="#{login.password}" required="true"
+							requiredMessage="campo obbligatorio" id="password"
+							a:placeholder="Password" />
+						<h:message for="password" />
+						<h:commandButton class="btn btn-default" action="#{login.login()}"
+							value="Accedi" />
+					</div>
+				</h:form>
+				<h:form class="form-inline" rendered="#{login.loggedIn}">
+					<div class="form-group">
+						<h:outputLabel value="Benvenuto #{login.username}"
+							styleClass="control-label" />
+						<h:commandButton class="btn btn-default"
+							action="#{login.logout}" value="Esci" />
+					</div>
+				</h:form>
+			</div>
 		</div>
-		<div>
-			<h:commandButton action="#{login.login()}" value="Accedi" />
-		</div>
-	</h:form>
-	<h:form rendered="#{login.loggedIn}">
-		<h:commandButton action="#{login.logout()}" value="Esci" />
-	</h:form>
-</h:body> 
+	</div>
+</h:body>
 </html>
