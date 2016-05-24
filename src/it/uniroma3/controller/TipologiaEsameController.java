@@ -15,6 +15,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.flow.FlowScoped;
 
+import org.apache.tomcat.util.http.fileupload.RequestContext;
+
 @ManagedBean 
 @SessionScoped
 public class TipologiaEsameController {
@@ -40,7 +42,7 @@ public class TipologiaEsameController {
 	public String findTipologiaEsame(Long id)
 	{
 		this.te = tipologiaEsameFacade.getTipologiaEsame(id);
-		return "/public/tipologiaEsameDettagli";
+		return  "/public/tipologiaEsameDettagli";
 	}
 
 

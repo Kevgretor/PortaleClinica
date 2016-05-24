@@ -20,35 +20,37 @@
 			<div class="container">
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
-					<div class="panel-heading">Tipologie di Esami</div>
+					<div class="panel-heading">Dettagli Esame</div>
 					<div class="panel-body">
-						<p>Qui sono elencati gli esami che forniamo attraverso la
-							nostra clinica. Per ottenere maggiori informazioni per ciascun
-							esame cliccare sul nome</p>
+						<p>Qui sono elencate tutte le informazioni riguardante l'esame
+							richiesto</p>
 					</div>
-					<!-- Table -->
-					<h:form>
-						<div class="container">
-							<table class="table table-striped">
-								<tr>
-									<td>ID</td>
-									<td>Nome</td>
-									<td>Prezzo</td>
-								</tr>
-								<ui:repeat var="te" value="#{tipologiaEsameController.tesami}">
-									<tr>
-										<td>${te.id}</td>
-										<td><h:commandLink
-												action="#{tipologiaEsameController.findTipologiaEsame(id)}"
-												value="#{te.nome}">
+					<div class="container">
+						<!-- Table -->
+						<table class="table table-striped">
+							<tr>
+								<th>Nome:</th>
+								<th>${te.nome}</th>
+							</tr>
+							<tr>
+								<th>Descrizione:</th>
+								<th>${te.descrizione}</th>
+							</tr>
+							<tr>
+								<th>Prerequisiti:</th>
+								<th>${te.prerequisiti}</th>
+							</tr>
+							<tr>
+								<th>Indicatore Risultati:</th>
+								<th>${te.indicatoreRisultati}</th>
+							</tr>
+							<tr>
+								<th>Prezzo:</th>
+								<th>${te.costo}</th>
+							</tr>
 
-											</h:commandLink></td>
-										<td>${te.costo} €</td>
-									</tr>
-								</ui:repeat>
-							</table>
-						</div>
-					</h:form>
+						</table>
+					</div>
 				</div>
 			</div>
 		</ui:define>

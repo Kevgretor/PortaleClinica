@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"   
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
-    <h:head>
-    <meta charset="utf-8" />
+<h:head>
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
-	<link rel="stylesheet" type="text/css" href="/PortaleClinica/bootstrap/css/bootstrap.min.css" />
-    </h:head>
-    
-    <h:body>
+	<link rel="stylesheet" type="text/css"
+		href="/PortaleClinica/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="/PortaleClinica/layout.css" />
+</h:head>
+
+<h:body>
 	<script src="/PortaleClinica/js/jquery-1.11.2.min.js"></script>
 	<script src="/PortaleClinica/bootstrap/js/bootstrap.min.js"></script>
 	<div id="page">
-		
-	    <div id="header">
-		<ui:insert name="header" >
- 	 		<ui:include src="public/login.xhtml" />
-		</ui:insert>
-	    </div>
-	    
-	    <hr />
-	    
-	    <div id="content">
-	  	<ui:insert name="content" >
-	 	   <ui:include src="public/commonContent.xhtml" /> 
-	   	</ui:insert>
-	    </div>
-		    
+
+		<div id="header">
+			<ui:insert name="header">
+			<ui:include src="public/carousel.xhtml" />
+				<div class="container">
+					<ui:include src="public/navbar.xhtml" />
+					<ui:include src="public/login.xhtml" />
+				</div>
+			</ui:insert>
+		</div>
+
 		<hr />
-		    
-	    <div id="footer">
-	    	<ui:insert name="footer" >
-	    	 <!--  <ui:include src="/template/common/commonFooter.xhtml" />-->
-	    	</ui:insert>
-    	    </div>
 
-        </div>
+		<div id="content">
+			<ui:insert name="content">
+				<ui:include src="public/commonContent.xhtml" />
+			</ui:insert>
+		</div>
 
-    </h:body>
+		<hr />
+
+		<div id="footer">
+			<ui:insert name="footer">
+				<!--  <ui:include src="/template/common/commonFooter.xhtml" />-->
+			</ui:insert>
+		</div>
+
+	</div>
+
+</h:body>
 </html>

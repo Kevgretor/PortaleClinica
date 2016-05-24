@@ -10,39 +10,34 @@
 </h:head>
 
 <h:body>
-	<div class="container">
-		<div class="row">
-			<div class="pull-right">
-				<h:form class="form-inline" rendered="#{!login.loggedIn}">
-					<h:outputLabel value="${login.messaggio}"
-						styleClass="control-label col-sm-2" />
-					<div class="form-group has-feedback">
-						<h:outputLabel class="sr-only" for="username">Username</h:outputLabel>
-						<h:inputText type="text" class="form-control"
-							value="#{login.username}" required="true"
-							requiredMessage="campo obbligatorio" id="username"
-							a:placeholder="Username" />
-						<h:message for="username" />
-						<h:outputLabel class="sr-only" for="username">Password</h:outputLabel>
-						<h:inputSecret type="password" class="form-control"
-							value="#{login.password}" required="true"
-							requiredMessage="campo obbligatorio" id="password"
-							a:placeholder="Password" />
-						<h:message for="password" />
-						<h:commandButton class="btn btn-default" action="#{login.login()}"
-							value="Accedi" />
-					</div>
-				</h:form>
-				<h:form class="form-inline" rendered="#{login.loggedIn}">
-					<div class="form-group">
-						<h:outputLabel value="Benvenuto #{login.username}"
-							styleClass="control-label" />
-						<h:commandButton class="btn btn-default"
-							action="#{login.logout}" value="Esci" />
-					</div>
-				</h:form>
+	<div class="pull-right">
+		<h:form class="form-inline" rendered="#{!login.loggedIn}">
+			<h:outputLabel value="${login.messaggio}"
+				styleClass="control-label col-sm-2" />
+			<div class="form-group has-feedback">
+				<h:outputLabel class="sr-only" for="username">Username</h:outputLabel>
+				<h:inputText type="text" class="form-control"
+					value="#{login.username}" required="true"
+					requiredMessage="campo obbligatorio" id="username"
+					a:placeholder="Username" />
+				<h:message for="username" />
+				<h:outputLabel class="sr-only" for="username">Password</h:outputLabel>
+				<h:inputSecret type="password" class="form-control"
+					value="#{login.password}" required="true"
+					requiredMessage="campo obbligatorio" id="password"
+					a:placeholder="Password" />
+				<h:message for="password" />
+				<h:commandButton class="btn btn-default" action="#{login.login()}"
+					value="Accedi" />
 			</div>
-		</div>
+		</h:form>
+		<h:form class="form-inline" rendered="#{login.loggedIn}">
+			<div class="form-group">
+				<h:outputLabel styleClass="label label-default" style="margin-right: 7px !important;" >Benvenuto #{login.username}  </h:outputLabel>
+				<h:commandButton class="btn btn-default" action="#{login.logout}"
+					value="Esci" />
+			</div>
+		</h:form>
 	</div>
 </h:body>
 </html>

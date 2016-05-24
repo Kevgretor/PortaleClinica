@@ -19,46 +19,52 @@
 		<ui:define name="content">
 			<div class="container">
 				<div class="panel panel-default">
-				<h:form>
-					<!-- Default panel contents -->
-					<div class="panel-heading">Inserimento nuovo Esame</div>
-					<div class="panel-body">
-						<p>Selezionare il paziente, il medico, il tipo di esame e la
-							data in cui verrà prenotato l'esame</p>
-					</div>
-					<table class="table">
-						<tr>
-							<th>Paziente</th>
-							<th>Medico</th>
-							<th>Tipologia Esame</th>
-							<th>Data</th>
-						</tr>
-						<tr>
-							<th><h:selectOneMenu class="form-control" id="utente"
-									value="#{esameCreatorController.utente_id}">
-									<f:selectItems value="#{esameCreatorController.utenti}" var="p"
-										itemLabel="#{p.nome} #{p.cognome}" itemValue="#{p.id}" />
-								</h:selectOneMenu></th>
-							<th><h:selectOneMenu class="form-control" id="medico"
-									value="#{esameCreatorController.medico_id}">
-									<f:selectItems value="#{esameCreatorController.medici}" var="p"
-										itemLabel="#{p.nome} #{p.cognome}" itemValue="#{p.id}" />
-								</h:selectOneMenu></th>
-							<th><h:selectOneMenu class="form-control" id="tipologiaEsame"
-									value="#{esameCreatorController.tipologiaEsame_id}">
-									<f:selectItems value="#{esameCreatorController.tipologiaEsami}"
-										var="p" itemLabel="#{p.nome}" itemValue="#{p.id}" />
-								</h:selectOneMenu></th>
-							<th><h:inputText type="date" class="form-control"
-									value="#{esameCreatorController.dataEsame}" id="dataEsame">
-									<f:convertDateTime pattern="dd-MM-yyyy" />
-								</h:inputText></th>
-						</tr>
-					</table>
-					<div>
-						<h:commandButton class="btn btn-default" value="Invia"
-							action="#{esameCreatorController.createEsame}" />
-					</div>
+					<h:form>
+						<!-- Default panel contents -->
+						<div class="panel-heading">Inserimento nuovo Esame</div>
+						<div class="panel-body">
+							<p>Selezionare il paziente, il medico, il tipo di esame e la
+								data in cui verrà prenotato l'esame</p>
+						</div>
+						<table class="table">
+							<tr>
+								<td>Paziente</td>
+								<td>Medico</td>
+								<td>Tipologia Esame</td>
+								<td>Data</td>
+							</tr>
+							<tr>
+								<td><h:selectOneMenu class="form-control" id="utente"
+										value="#{esameCreatorController.utente_id}">
+										<f:selectItems value="#{esameCreatorController.utenti}"
+											var="p" itemLabel="#{p.nome} #{p.cognome}"
+											itemValue="#{p.id}" />
+									</h:selectOneMenu></td>
+								<td><h:selectOneMenu class="form-control" id="medico"
+										value="#{esameCreatorController.medico_id}">
+										<f:selectItems value="#{esameCreatorController.medici}"
+											var="p" itemLabel="#{p.nome} #{p.cognome}"
+											itemValue="#{p.id}" />
+									</h:selectOneMenu></td>
+								<td><h:selectOneMenu class="form-control"
+										id="tipologiaEsame"
+										value="#{esameCreatorController.tipologiaEsame_id}">
+										<f:selectItems
+											value="#{esameCreatorController.tipologiaEsami}" var="p"
+											itemLabel="#{p.nome}" itemValue="#{p.id}" />
+									</h:selectOneMenu></td>
+								<td><h:inputText type="date" class="form-control"
+										value="#{esameCreatorController.dataEsame}" id="dataEsame"
+										a:placeholder="GG-MM-AAAA" a:data-fv-date="true"
+										a:data-fv-date-format="MM/DD/YYYY"
+										a:data-fv-date-message="The value is not a valid date">
+									</h:inputText></td>
+							</tr>
+						</table>
+						<div style="text-align: center;">
+							<h:commandButton class="btn btn-default" value="Invia"
+								action="#{esameCreatorController.createEsame}" />
+						</div>
 					</h:form>
 				</div>
 			</div>
