@@ -18,19 +18,19 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   
-  <!-- <filter>
-  	<filter-name>AuthFilter</filter-name> mandatory
-  	<filter-class>it.uniroma3.servlet.AuthFilterServlet</filter-class> mandatory
-  </filter> -->
+   <filter>
+  	<filter-name>AuthFilter</filter-name> <!-- mandatory -->
+  	<filter-class>it.uniroma3.servlet.AuthFilterServlet</filter-class> <!-- mandatory -->
+  </filter>
   
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
 
-  <!-- <filter-mapping>
+   <filter-mapping>
 	    <filter-name>AuthFilter</filter-name>
 	    <url-pattern>/amministrazione/*</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping>
 	    
 </web-app>

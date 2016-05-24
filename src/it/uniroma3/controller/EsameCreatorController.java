@@ -45,7 +45,7 @@ public class EsameCreatorController {
 		utenti = utenteFacade.getAllUtenti();
 		medici = medicoFacade.getAllMedici();
 		tipologiaEsami = tipologiaEsameFacade.getAllTipologiaEsame();
-		return "newEsame";
+		return "/amministrazione/newEsame";
 	}
 	
 	public String createEsame() 

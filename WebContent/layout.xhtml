@@ -12,25 +12,29 @@
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/PortaleClinica/bootstrap/css/bootstrap.min.css" />
     </h:head>
     
     <h:body>
-	<script src="js/jquery-1.11.2.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="/PortaleClinica/js/jquery-1.11.2.min.js"></script>
+	<script src="/PortaleClinica/bootstrap/js/bootstrap.min.js"></script>
 	<div id="page">
 		
 	    <div id="header">
 		<ui:insert name="header" >
- 	 		<ui:include src="login.xhtml" />
+ 	 		<ui:include src="public/login.xhtml" />
 		</ui:insert>
 	    </div>
 	    
+	    <hr />
+	    
 	    <div id="content">
 	  	<ui:insert name="content" >
-	 	   <ui:include src="commonContent.xhtml" /> 
+	 	   <ui:include src="public/commonContent.xhtml" /> 
 	   	</ui:insert>
 	    </div>
+		    
+		<hr />
 		    
 	    <div id="footer">
 	    	<ui:insert name="footer" >

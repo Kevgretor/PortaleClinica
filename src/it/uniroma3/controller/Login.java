@@ -11,6 +11,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
@@ -54,11 +55,12 @@ public class Login implements Serializable {
 		messaggio = "*password errata";
 		//return "login";
 	}
-	public void logout() 
+	public String logout() 
 	{
 		HttpSession session = Util.getSession();
 	    session.invalidate();
 		utente = null;
+		return "/public/index";
 	}
 
 	public boolean isLoggedIn() 

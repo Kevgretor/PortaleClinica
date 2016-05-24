@@ -1,18 +1,68 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"   
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:f="http://java.sun.com/jsf/core"
-      >
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h:form>       
-            <p>Welcome, #{loginBean.uname}</p>
-        <h:commandButton action="#{loginBean.logout}" value="Logout"  ajax="false"></h:commandButton>
-    </h:form>
-    </h:body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+>
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css"
+		href="/bootstrap/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<div class="panel panel-default">
+				<h:form>
+					<!-- Default panel contents -->
+					<div class="panel-heading">Inserimento nuovo Esame</div>
+					<div class="panel-body">
+						<p>Selezionare il paziente, il medico, il tipo di esame e la
+							data in cui verrà prenotato l'esame</p>
+					</div>
+					<table class="table">
+						<tr>
+							<th>Paziente</th>
+							<th>Medico</th>
+							<th>Tipologia Esame</th>
+							<th>Data</th>
+						</tr>
+						<tr>
+							<th><h:selectOneMenu class="form-control" id="utente"
+									value="#{esameCreatorController.utente_id}">
+									<f:selectItems value="#{esameCreatorController.utenti}" var="p"
+										itemLabel="#{p.nome} #{p.cognome}" itemValue="#{p.id}" />
+								</h:selectOneMenu></th>
+							<th><h:selectOneMenu class="form-control" id="medico"
+									value="#{esameCreatorController.medico_id}">
+									<f:selectItems value="#{esameCreatorController.medici}" var="p"
+										itemLabel="#{p.nome} #{p.cognome}" itemValue="#{p.id}" />
+								</h:selectOneMenu></th>
+							<th><h:selectOneMenu class="form-control" id="tipologiaEsame"
+									value="#{esameCreatorController.tipologiaEsame_id}">
+									<f:selectItems value="#{esameCreatorController.tipologiaEsami}"
+										var="p" itemLabel="#{p.nome}" itemValue="#{p.id}" />
+								</h:selectOneMenu></th>
+							<th><h:inputText type="date" class="form-control"
+									value="#{esameCreatorController.dataEsame}" id="dataEsame">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:inputText></th>
+						</tr>
+					</table>
+					<div>
+						<h:commandButton class="btn btn-default" value="Invia"
+							action="#{esameCreatorController.createEsame}" />
+					</div>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

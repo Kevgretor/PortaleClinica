@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.NoneScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.flow.FlowScoped;
@@ -39,14 +40,14 @@ public class TipologiaEsameController {
 	public String findTipologiaEsame(Long id)
 	{
 		this.te = tipologiaEsameFacade.getTipologiaEsame(id);
-		return "tipologiaEsameDettagli";
+		return "/public/tipologiaEsameDettagli";
 	}
 
 
 	public String listTipologiaEsame()
 	{
 		this.tesami = tipologiaEsameFacade.getAllTipologiaEsame();
-		return "tipologiaEsameList";
+		return "/public/tipologiaEsameList";
 	}
 	
 	public Long getId()
