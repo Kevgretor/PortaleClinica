@@ -32,5 +32,10 @@
 	    <filter-name>AuthFilter</filter-name>
 	    <url-pattern>/amministrazione/*</url-pattern>
 	</filter-mapping>
+	
+	<filter-mapping>
+	    <filter-name>AuthFilter</filter-name>
+	    <url-pattern>/utente/*</url-pattern>
+	</filter-mapping>
 	    
 </web-app>

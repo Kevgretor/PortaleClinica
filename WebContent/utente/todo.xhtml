@@ -7,19 +7,21 @@
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css"
+		href="bootstrap/css/bootstrap.min.css" />
 </h:head>
+
 <h:body>
-	<div class="footer">
-		<div class="container container-footer">
-			<div class="row">
-				<div class="col-md-2 pull-left">
-					<p align="left" class="text-muted">Progetto SIW 2016</p>
-				</div>
-				<div class="col-md-2 pull-right">
-					<p align="right" class="text-muted">Rizzo Gianluca 450733</p>
-				</div>
-			</div>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<div class="container">
+			<h1>Todo</h1>
+			<h2>Strumenti per gli utenti da fare</h2>
 		</div>
-	</div>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

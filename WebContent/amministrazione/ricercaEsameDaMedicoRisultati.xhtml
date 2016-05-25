@@ -40,15 +40,19 @@
 									<td>${e.id}</td>
 									<td>${e.utente.nome} ${e.utente.cognome}</td>
 									<td>${e.tipologiaEsame.nome}</td>
-									<td>${e.dataEsame}</td>
-									<td>${e.dataPrenotazione}</td>
+									<td><h:outputText value="#{e.dataEsame}">
+											<f:convertDateTime type="dataEsame" pattern="dd-MM-yyyy" />
+										</h:outputText></td>
+									<td><h:outputText value="#{e.dataPrenotazione}">
+											<f:convertDateTime type="dataPrenotazione" pattern="dd-MM-yyyy hh:mm:ss" />
+										</h:outputText></td>
 								</tr>
 							</ui:repeat>
 						</table>
 					</div>
 					<div class="panel-footer">
 						<h:form>
-							<h:commandLink action="#{esameCreatorController.getAllMedici}"
+							<h:commandButton action="#{esameCreatorController.getAllMedici}"
 								class="btn btn-default" value="Indietro" />
 						</h:form>
 					</div>

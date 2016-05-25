@@ -11,8 +11,8 @@ import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
 public class UtenteController {
-	
-	@ManagedProperty(value="#{param.id}")
+
+	@ManagedProperty(value = "#{param.id}")
 	private Long id;
 	private String nome;
 	private String cognome;
@@ -21,40 +21,38 @@ public class UtenteController {
 	private String role;
 	private Utente utente;
 	private List<Utente> utenti;
-	
+
 	@EJB
 	private UtenteFacade utenteFacade;
-	
+
 	public String createPaziente() {
-		this.utente = utenteFacade.createUtente(nome, cognome, username, password, "paziente");
-		return "utente_creato"; 
+		this.utente = utenteFacade.createUtente(nome, cognome, username,
+				password, "paziente");
+		return "utente_creato";
 	}
-	
+
 	public String createAmministratore() {
-		this.utente = utenteFacade.createUtente(nome, cognome, username, password, "amministratore");
-		return "amministratore_creato"; 
+		this.utente = utenteFacade.createUtente(nome, cognome, username,
+				password, "amministratore");
+		return "amministratore_creato";
 	}
-	
-	public String findUtente()
-	{
+
+	public String findUtente() {
 		this.utente = utenteFacade.getUtente(id);
 		return "utente_dettagli";
 	}
-	
-	public String findUtente(Long id)
-	{
+
+	public String findUtente(Long id) {
 		this.utente = utenteFacade.getUtente(id);
 		return "utente_dettagli";
 	}
-	
-	public String findUtente(String username)
-	{
+
+	public String findUtente(String username) {
 		this.utente = utenteFacade.getUtenteByUsername(username);
 		return "utente_dettagli";
 	}
 
-	public String listUtenti()
-	{
+	public String listUtenti() {
 		this.utenti = utenteFacade.getAllUtenti();
 		return "utente_list";
 	}
@@ -111,82 +109,44 @@ public class UtenteController {
 		this.password = password;
 	}
 
-	
-	
-	
-	
 	/*
-	public String listProducts() {
-		this.products = productFacade.getAllProducts();
-		return "products"; 
-	}
-
-	public String findProduct() {
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-	
-	public String findProduct(Long id) {
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Float getPrice() {
-		return price;
-	}
-
-	public void setPrice(Float price) {
-		this.price = price;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-	*/
+	 * public String listProducts() { this.products =
+	 * productFacade.getAllProducts(); return "products"; }
+	 * 
+	 * public String findProduct() { this.product =
+	 * productFacade.getProduct(id); return "product"; }
+	 * 
+	 * public String findProduct(Long id) { this.product =
+	 * productFacade.getProduct(id); return "product"; }
+	 * 
+	 * public Long getId() { return id; }
+	 * 
+	 * public void setId(Long id) { this.id = id; }
+	 * 
+	 * public String getName() { return name; }
+	 * 
+	 * public void setName(String name) { this.name = name; }
+	 * 
+	 * public Float getPrice() { return price; }
+	 * 
+	 * public void setPrice(Float price) { this.price = price; }
+	 * 
+	 * public String getDescription() { return description; }
+	 * 
+	 * public void setDescription(String description) { this.description =
+	 * description; }
+	 * 
+	 * public String getCode() { return code; }
+	 * 
+	 * public void setCode(String code) { this.code = code; }
+	 * 
+	 * public Product getProduct() { return product; }
+	 * 
+	 * public void setProduct(Product product) { this.product = product; }
+	 * 
+	 * public List<Product> getProducts() { return products; }
+	 * 
+	 * public void setProducts(List<Product> products) { this.products =
+	 * products; }
+	 */
 }
-
-

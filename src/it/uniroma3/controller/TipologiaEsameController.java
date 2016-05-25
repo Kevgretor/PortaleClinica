@@ -3,25 +3,18 @@ package it.uniroma3.controller;
 import it.uniroma3.persistence.facade.TipologiaEsameFacade;
 import it.uniroma3.persistence.model.TipologiaEsame;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.NoneScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
-import javax.faces.flow.FlowScoped;
 
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-
-@ManagedBean 
+@ManagedBean
 @SessionScoped
 public class TipologiaEsameController {
-	
-	@ManagedProperty(value="#{id}")
+
+	@ManagedProperty(value = "#{id}")
 	private Long id;
 	private String nome;
 	private String descrizione;
@@ -30,43 +23,45 @@ public class TipologiaEsameController {
 	private String indicatoreRisultati;
 	private TipologiaEsame te;
 	private List<TipologiaEsame> tesami;
-	
+
 	private String messaggio;
-	
+
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
-	
+
 	public String createTipologiaEsame() {
-		if(nome.equals("") || descrizione.equals("") || requisiti.equals("") || indicatoreRisultati.equals(""))
-		{
+		if (nome.equals("") || descrizione.equals("") || requisiti.equals("")
+				|| indicatoreRisultati.equals("") || costo == 0.f) {
 			messaggio = "Tutti i campi sono obbligatori.";
 			return "";
 		}
-		this.te = tipologiaEsameFacade.createTipologiaEsame(nome, descrizione, costo, requisiti, indicatoreRisultati);
+		this.te = tipologiaEsameFacade.createTipologiaEsame(nome, descrizione,
+				costo, requisiti, indicatoreRisultati);
+		nome = "";
+		descrizione = "";
+		costo = 0f;
+		requisiti = "";
+		indicatoreRisultati = "";
+
 		messaggio = "";
-		return "tipologiaEsameSuccess"; 
+		return "tipologiaEsameSuccess";
 	}
-	
-	public String findTipologiaEsame(Long id)
-	{
+
+	public String findTipologiaEsame(Long id) {
 		this.te = tipologiaEsameFacade.getTipologiaEsame(id);
-		return  "/public/tipologiaEsameDettagli";
+		return "/public/tipologiaEsameDettagli";
 	}
 
-
-	public String listTipologiaEsame()
-	{
+	public String listTipologiaEsame() {
 		this.tesami = tipologiaEsameFacade.getAllTipologiaEsame();
 		return "/public/tipologiaEsameList";
 	}
-	
-	public Long getId()
-	{
+
+	public Long getId() {
 		return id;
 	}
-	
-	public void setId(Long id)
-	{
+
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -122,7 +117,8 @@ public class TipologiaEsameController {
 		return tipologiaEsameFacade;
 	}
 
-	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
+	public void setTipologiaEsameFacade(
+			TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
 
@@ -138,82 +134,44 @@ public class TipologiaEsameController {
 		this.messaggio = messaggio;
 	}
 
-	
-	
-	
-	
 	/*
-	public String listProducts() {
-		this.products = productFacade.getAllProducts();
-		return "products"; 
-	}
-
-	public String findProduct() {
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-	
-	public String findProduct(Long id) {
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Float getPrice() {
-		return price;
-	}
-
-	public void setPrice(Float price) {
-		this.price = price;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-	*/
+	 * public String listProducts() { this.products =
+	 * productFacade.getAllProducts(); return "products"; }
+	 * 
+	 * public String findProduct() { this.product =
+	 * productFacade.getProduct(id); return "product"; }
+	 * 
+	 * public String findProduct(Long id) { this.product =
+	 * productFacade.getProduct(id); return "product"; }
+	 * 
+	 * public Long getId() { return id; }
+	 * 
+	 * public void setId(Long id) { this.id = id; }
+	 * 
+	 * public String getName() { return name; }
+	 * 
+	 * public void setName(String name) { this.name = name; }
+	 * 
+	 * public Float getPrice() { return price; }
+	 * 
+	 * public void setPrice(Float price) { this.price = price; }
+	 * 
+	 * public String getDescription() { return description; }
+	 * 
+	 * public void setDescription(String description) { this.description =
+	 * description; }
+	 * 
+	 * public String getCode() { return code; }
+	 * 
+	 * public void setCode(String code) { this.code = code; }
+	 * 
+	 * public Product getProduct() { return product; }
+	 * 
+	 * public void setProduct(Product product) { this.product = product; }
+	 * 
+	 * public List<Product> getProducts() { return products; }
+	 * 
+	 * public void setProducts(List<Product> products) { this.products =
+	 * products; }
+	 */
 }
-
-
