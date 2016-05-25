@@ -11,12 +11,16 @@
 
 <h:body>
 	<div class="pull-right">
-		<h:form class="form-inline" rendered="#{!login.loggedIn}" >
-			<div class="form-group">				
-				<h:inputText type="text" class="form-control" style="width: 130px;"
+		<h:form class="form-inline" rendered="#{!login.loggedIn}">
+			<div class="form-group has-feedback">
+				<h:outputLabel class="sr-only" for="username">Username</h:outputLabel>
+				<h:inputText type="text" class="form-control"
 					value="#{login.username}" id="username" a:placeholder="Username" />
-				<h:inputSecret type="password" class="form-control" style="width: 130px;"
+				<h:message for="username" />
+				<h:outputLabel class="sr-only" for="username">Password</h:outputLabel>
+				<h:inputSecret type="password" class="form-control"
 					value="#{login.password}" id="password" a:placeholder="Password" />
+				<h:message for="password" />
 				<h:commandButton class="btn btn-default" action="#{login.login()}"
 					value="Accedi" />
 			</div>

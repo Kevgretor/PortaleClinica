@@ -14,6 +14,8 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
@@ -24,16 +26,16 @@ public class EsameCreatorController {
 	private List<Medico> medici;
 	private List<TipologiaEsame> tipologiaEsami;
 	private List<Esame> esami;
-
+	
 	private Medico medico;
 	private Utente utente;
 	private TipologiaEsame tipologiaEsame;
 	private Date dataEsame;
-
+	
 	private String messaggio;
-
+	
 	private Long medico_id, utente_id, tipologiaEsame_id;
-
+	
 	@EJB
 	private UtenteFacade utenteFacade;
 	@EJB
@@ -42,38 +44,33 @@ public class EsameCreatorController {
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	@EJB
 	private EsameFacade esameFacade;
-
+	
 	public String newEsame() {
 		utenti = utenteFacade.getAllUtentiPazienti();
 		medici = medicoFacade.getAllMedici();
 		tipologiaEsami = tipologiaEsameFacade.getAllTipologiaEsame();
-
-		utente = null;
-		medico = null;
-		tipologiaEsame = null;
-		medico_id = null;
-		utente_id = null;
-		tipologiaEsame_id = null;
-
 		return "/amministrazione/newEsame";
 	}
-
-	public String createEsame() {
-		try {
+	
+	public String createEsame() 
+	{
+		try
+		{
 			for (Utente u : utenti)
-				if (u.getId() == utente_id)
+				if(u.getId()==utente_id)
 					this.utente = u;
-			for (Medico m : medici)
-				if (m.getId() == medico_id)
+			for(Medico m : medici)
+				if(m.getId()==medico_id)
 					this.medico = m;
-			for (TipologiaEsame te : tipologiaEsami)
-				if (te.getId() == tipologiaEsame_id)
+			for(TipologiaEsame te : tipologiaEsami)
+				if(te.getId()==tipologiaEsame_id)
 					this.tipologiaEsame = te;
 		} catch (Exception e) {
 			messaggio = "Operazione fallita. Riprovare.";
 			return "";
 		}
-		if (dataEsame == null) {
+		if(dataEsame==null)
+		{
 			messaggio = "Tutti i campi sono obbligatori.";
 			return "";
 		}
@@ -81,13 +78,15 @@ public class EsameCreatorController {
 		messaggio = "";
 		return "esameSuccess";
 	}
-
-	public String getAllMedici() {
+	
+	public String getAllMedici()
+	{
 		medici = medicoFacade.getAllMedici();
 		return "/amministrazione/ricercaEsameDaMedico";
 	}
-
-	public String getEsamiByMedico() {
+	
+	public String getEsamiByMedico()
+	{
 		this.esami = esameFacade.getEsamiByMedico(medico_id);
 		return "/amministrazione/ricercaEsameDaMedicoRisultati";
 	}
@@ -187,5 +186,7 @@ public class EsameCreatorController {
 	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
 	}
-
+	
+	
+	
 }
