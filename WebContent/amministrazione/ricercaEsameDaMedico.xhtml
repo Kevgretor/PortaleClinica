@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css"
+		href="bootstrap/css/bootstrap.min.css" />
+</h:head>
+
+<h:body>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<h:form>
+						<div class="panel-heading">Ricerca esame via Medico</div>
+						<div class="panel-body">
+							<p>E' possibile ricercare tutti gli esami effettuati da un
+								singolo medico fino ad oggi. Selezionare il medico per il quale
+								si vuole visualizzare tale informazione.</p>
+							<!-- Table -->
+							<h:selectOneMenu class="form-control" id="medico_id"
+								value="#{esameCreatorController.medico_id}">
+								<f:selectItems value="#{esameCreatorController.medici}" var="m"
+									itemLabel="#{m.nome} #{m.cognome}" itemValue="#{m.id}" />
+							</h:selectOneMenu>
+						</div>
+
+						<div class="panel-footer">
+							<h:commandButton class="btn btn-primary" value="Invia"
+								action="#{esameCreatorController.getEsamiByMedico}"
+								style="margin-right: 7px !important;" />
+
+							<a href="/PortaleClinica/public/index.html"
+								class="btn btn-default"> Indietro </a>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

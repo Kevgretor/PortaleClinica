@@ -4,6 +4,7 @@ import it.uniroma3.persistence.facade.EsameFacade;
 import it.uniroma3.persistence.facade.MedicoFacade;
 import it.uniroma3.persistence.facade.TipologiaEsameFacade;
 import it.uniroma3.persistence.facade.UtenteFacade;
+import it.uniroma3.persistence.model.Esame;
 import it.uniroma3.persistence.model.Medico;
 import it.uniroma3.persistence.model.TipologiaEsame;
 import it.uniroma3.persistence.model.Utente;
@@ -24,6 +25,7 @@ public class EsameCreatorController {
 	private List<Utente> utenti;
 	private List<Medico> medici;
 	private List<TipologiaEsame> tipologiaEsami;
+	private List<Esame> esami;
 	
 	private Medico medico;
 	private Utente utente;
@@ -44,7 +46,7 @@ public class EsameCreatorController {
 	private EsameFacade esameFacade;
 	
 	public String newEsame() {
-		utenti = utenteFacade.getAllUtenti();
+		utenti = utenteFacade.getAllUtentiPazienti();
 		medici = medicoFacade.getAllMedici();
 		tipologiaEsami = tipologiaEsameFacade.getAllTipologiaEsame();
 		return "/amministrazione/newEsame";
@@ -77,17 +79,16 @@ public class EsameCreatorController {
 		return "esameSuccess";
 	}
 	
-	public void getObjectReferences()
+	public String getAllMedici()
 	{
-		for (Medico m : medici)
-			if(m.getId()==medico_id)
-				this.medico = m;
-		for (Utente u : utenti)
-			if(u.getId()==utente_id)
-				this.utente = u;
-		for (TipologiaEsame te : tipologiaEsami)
-			if(te.getId()==tipologiaEsame_id)
-				this.tipologiaEsame = te;
+		medici = medicoFacade.getAllMedici();
+		return "/amministrazione/ricercaEsameDaMedico";
+	}
+	
+	public String getEsamiByMedico()
+	{
+		this.esami = esameFacade.getEsamiByMedico(medico_id);
+		return "/amministrazione/ricercaEsameDaMedicoRisultati";
 	}
 
 	public List<Utente> getUtenti() {
@@ -176,6 +177,14 @@ public class EsameCreatorController {
 
 	public void setMessaggio(String messaggio) {
 		this.messaggio = messaggio;
+	}
+
+	public List<Esame> getEsami() {
+		return esami;
+	}
+
+	public void setEsami(List<Esame> esami) {
+		this.esami = esami;
 	}
 	
 	

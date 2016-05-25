@@ -20,9 +20,10 @@ import javax.persistence.SequenceGenerator;
 	@Column(nullable = false)
 	private String nome;
 
+	@Column(nullable = false)
 	private String cognome;
-	@Column(length = 2000)
-
+	
+	@Column(length = 2000, nullable = false)
 	private String specializzazione;
 	
 	public Medico() {

@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.3
 -- Dumped by pg_dump version 9.5.3
 
--- Started on 2016-05-17 03:19:05
+-- Started on 2016-05-25 15:29:00
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2152 (class 0 OID 0)
+-- TOC entry 2153 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -48,7 +48,8 @@ CREATE TABLE esame (
     id_medico bigint,
     data_prenotazione timestamp(0) without time zone,
     data_esame date,
-    id bigint NOT NULL
+    id bigint NOT NULL,
+    id_tipologiaesame bigint
 );
 
 
@@ -121,9 +122,9 @@ CREATE TABLE tipologia_di_esame (
     id bigint NOT NULL,
     nome character varying,
     descrizione character varying,
-    costo character varying,
     prerequisiti character varying,
-    indicatore_risultati character varying
+    indicatore_risultati character varying,
+    costo real
 );
 
 
@@ -177,51 +178,47 @@ CREATE SEQUENCE utente_id
 ALTER TABLE utente_id OWNER TO postgres;
 
 --
--- TOC entry 2143 (class 0 OID 16437)
+-- TOC entry 2144 (class 0 OID 16437)
 -- Dependencies: 188
 -- Data for Name: esame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY esame (id_paziente, id_medico, data_prenotazione, data_esame, id) FROM stdin;
-9	13	\N	2016-05-17	5
-\.
-
-
---
--- TOC entry 2153 (class 0 OID 0)
--- Dependencies: 187
--- Name: esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('esame_id', 5, true);
-
-
---
--- TOC entry 2140 (class 0 OID 16417)
--- Dependencies: 185
--- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY medico (id, nome, cognome, specializzazione) FROM stdin;
-6	Mario	Rossi	Chirurgo
-7	Mario	Rossi	Chirurgo
-10	Mario	Rossi	Chirurgo
-11	Ciccio	Cicciarelli	Dietologo
-13	Ciccio	Cicciarelli	Dietologo
+COPY esame (id_paziente, id_medico, data_prenotazione, data_esame, id, id_tipologiaesame) FROM stdin;
 \.
 
 
 --
 -- TOC entry 2154 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esame_id', 1, true);
+
+
+--
+-- TOC entry 2141 (class 0 OID 16417)
+-- Dependencies: 185
+-- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY medico (id, nome, cognome, specializzazione) FROM stdin;
+1	Armando	Bianchi	Ortopedia
+2	Giuseppe	Adriani	Cardiologia
+\.
+
+
+--
+-- TOC entry 2155 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: medico_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('medico_id', 13, true);
+SELECT pg_catalog.setval('medico_id', 2, true);
 
 
 --
--- TOC entry 2144 (class 0 OID 16452)
+-- TOC entry 2145 (class 0 OID 16452)
 -- Dependencies: 189
 -- Data for Name: risultati_esame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -231,44 +228,45 @@ COPY risultati_esame (id_esame, risultati) FROM stdin;
 
 
 --
--- TOC entry 2141 (class 0 OID 16427)
+-- TOC entry 2142 (class 0 OID 16427)
 -- Dependencies: 186
 -- Data for Name: tipologia_di_esame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY tipologia_di_esame (id, nome, descrizione, costo, prerequisiti, indicatore_risultati) FROM stdin;
-\.
-
-
---
--- TOC entry 2155 (class 0 OID 0)
--- Dependencies: 181
--- Name: tipologia_esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('tipologia_esame_id', 1, false);
-
-
---
--- TOC entry 2138 (class 0 OID 16399)
--- Dependencies: 183
--- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY utente (nome, cognome, password, role, username, id) FROM stdin;
-Rosaria	Rossi	pass	paziente	rosaria.rossi	1
-Rosaria	Rossi	pass	paziente	rosaria.rossi2	6
-Obesa	McDowell	pass	paziente	obesa2	9
+COPY tipologia_di_esame (id, nome, descrizione, prerequisiti, indicatore_risultati, costo) FROM stdin;
+1	Emocromo	Esame emocromocitometrico.	digiuno 8	emoglobina, colesterolo	15.2399998
+2	Radiografia	Radiografia. Se richiesta dal medico curante verrà specificata la zona in sede di esame. Fondamentale per rivelare microlesioni dell'apparato scheletrico e altro.	nessuno	referto medico	29.5
 \.
 
 
 --
 -- TOC entry 2156 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: tipologia_esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tipologia_esame_id', 2, true);
+
+
+--
+-- TOC entry 2139 (class 0 OID 16399)
+-- Dependencies: 183
+-- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY utente (nome, cognome, password, role, username, id) FROM stdin;
+Admin	Admin	admin	admin	admin	1
+Maria Rosaria	Rossi	pass	utente	maria.rosaria	2
+\.
+
+
+--
+-- TOC entry 2157 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: utente_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('utente_id', 9, true);
+SELECT pg_catalog.setval('utente_id', 2, true);
 
 
 --
@@ -344,7 +342,16 @@ ALTER TABLE ONLY esame
 
 
 --
--- TOC entry 2021 (class 2606 OID 16460)
+-- TOC entry 2021 (class 2606 OID 16536)
+-- Name: esame_id_tipologiaEsame_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame
+    ADD CONSTRAINT "esame_id_tipologiaEsame_fkey" FOREIGN KEY (id_tipologiaesame) REFERENCES tipologia_di_esame(id);
+
+
+--
+-- TOC entry 2022 (class 2606 OID 16460)
 -- Name: risultati_esame_id_esame_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -353,7 +360,7 @@ ALTER TABLE ONLY risultati_esame
 
 
 --
--- TOC entry 2151 (class 0 OID 0)
+-- TOC entry 2152 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -364,7 +371,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2016-05-17 03:19:06
+-- Completed on 2016-05-25 15:29:00
 
 --
 -- PostgreSQL database dump complete

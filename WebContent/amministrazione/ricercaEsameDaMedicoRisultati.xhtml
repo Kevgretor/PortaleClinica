@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css"
+		href="bootstrap/css/bootstrap.min.css" />
+</h:head>
+
+<h:body>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">Esami effettuati da
+						${medicoController.medici[esameCreatorController.id].nome}</div>
+					<div class="panel-body">
+						<p>Qui sono elencati gli esami che forniamo attraverso la
+							nostra clinica. Per ottenere maggiori informazioni per ciascun
+							esame cliccare sul nome</p>
+						<!-- Table -->
+						<table class="table table-striped">
+							<tr>
+								<td>ID</td>
+								<td>Paziente</td>
+								<td>Tipologia Esame</td>
+								<td>Data Esame</td>
+								<td>Data Prenotazione</td>
+							</tr>
+							<ui:repeat var="e" value="#{esameCreatorController.esami}">
+								<tr>
+									<td>${e.id}</td>
+									<td>${e.utente.nome} ${e.utente.cognome}</td>
+									<td>${e.tipologiaEsame.nome}</td>
+									<td>${e.dataEsame}</td>
+									<td>${e.dataPrenotazione}</td>
+								</tr>
+							</ui:repeat>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<h:form>
+							<h:commandLink action="#{esameCreatorController.getAllMedici}"
+								class="btn btn-default" value="Indietro" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

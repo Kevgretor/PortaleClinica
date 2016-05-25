@@ -43,7 +43,7 @@ public class MedicoController {
 	public String listMedici()
 	{
 		this.medici = medicoFacade.getAllMedici();
-		return "medico";
+		return "/amministrazione/ricercaEsameDaMedico";
 	}
 	
 	public Long getId()

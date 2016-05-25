@@ -25,9 +25,13 @@
 							rendered="#{login.loggedIn and login.userAdmin}"
 							value="Prenota Esame" /></li>
 					<li role="presentation"><h:link
-						a:href="/PortaleClinica/amministrazione/newTipologiaEsame.html"
-						rendered="#{login.loggedIn and login.userAdmin}">Inserisci
+							a:href="/PortaleClinica/amministrazione/newTipologiaEsame.html"
+							rendered="#{login.loggedIn and login.userAdmin}">Inserisci
 							Tipologia Esame</h:link></li>
+					<li role="presentation"><h:commandLink
+							action="#{esameCreatorController.getAllMedici}"
+							rendered="#{login.loggedIn and login.userAdmin}"
+							value="Ricerca esami di un Medico" /></li>
 
 
 				</ul>

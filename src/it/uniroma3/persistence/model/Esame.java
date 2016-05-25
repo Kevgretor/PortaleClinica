@@ -19,7 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 	@Entity
-	@NamedQuery(name = "findAllEsami", query = "SELECT e FROM Esame e")
 	public class Esame {
         
 	@Id
@@ -64,12 +63,12 @@ import javax.persistence.TemporalType;
         return id;
     }
    
-   public Utente getPaziente() {
+   public Utente getUtente() {
 	   return this.utente;
    }
    
-   public void setPaziente(Utente paziente) {
-	   this.utente = paziente;
+   public void setUtente(Utente utente) {
+	   this.utente = utente;
    }
    
    public Medico getMedico() {

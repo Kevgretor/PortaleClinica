@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.SequenceGenerator;
 
 	@Entity
-	@NamedQuery(name = "findAllUtenti", query = "SELECT u FROM Utente u")
 	public class Utente {
         
 	@Id
@@ -20,13 +19,16 @@ import javax.persistence.SequenceGenerator;
 	@Column(nullable = false)
 	private String nome;
 
+	@Column(nullable = false)
 	private String cognome;
 
 	@Column(unique=true, nullable=false)
 	private String username;
 	
+	@Column(nullable=false)
 	private String password;
 	
+	@Column(nullable=false)
 	private String role;
 	
 	public Utente() {

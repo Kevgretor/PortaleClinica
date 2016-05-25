@@ -53,6 +53,15 @@ public class UtenteFacade {
 		return u;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Utente> getAllUtentiPazienti()
+	{
+		Query q = em.createNativeQuery("SELECT * FROM utente WHERE role=:role", Utente.class);
+		q.setParameter("role", "paziente");
+		List<Utente> risultati = q.getResultList();
+		return risultati;
+	}
+	
 	public void updateUtente(Utente u)
 	{
 		em.merge(u);

@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.SequenceGenerator;
 
 	@Entity(name="tipologia_di_esame")
-	@NamedQuery(name = "findAllTipologiaEsami", query = "SELECT t FROM tipologia_di_esame t")
 	public class TipologiaEsame {
         
 	@Id
@@ -20,13 +19,16 @@ import javax.persistence.SequenceGenerator;
 	@Column(nullable = false)
 	private String nome;
 
+	@Column(nullable = false)
 	private String descrizione;
 	
+	@Column(nullable = false)
 	private float costo;
 	
+	@Column(nullable = false)
 	private String prerequisiti;
 	
-	@Column(name="indicatore_risultati")
+	@Column(name="indicatore_risultati", nullable=false)
 	private String indicatoreRisultati;
 	
 	public TipologiaEsame() {

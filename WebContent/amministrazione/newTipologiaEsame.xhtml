@@ -32,25 +32,32 @@
 							<table class="table">
 								<tr>
 									<td>Nome</td>
-									<td>Descrizione</td>
-									<td>Prezzo</td>
-									<td>Requisiti</td>
-									<td>Indicatore Risultati</td>
-								</tr>
-								<tr>
 									<td><h:inputText a:type="text" class="form-control"
 											value="#{tipologiaEsameController.nome}" id="nome">
 										</h:inputText></td>
-									<td><h:inputText a:type="textarea" rows="3" class="form-control"
+								</tr>
+								<tr>
+									<td>Descrizione</td>
+									<td><h:inputText a:type="textarea" a:rows="3"
+											class="form-control"
 											value="#{tipologiaEsameController.descrizione}"
 											id="descrizione">
 										</h:inputText></td>
+								</tr>
+								<tr>
+									<td>Prezzo</td>
 									<td><h:inputText a:type="text" class="form-control"
 											value="#{tipologiaEsameController.costo}" id="costo">
 										</h:inputText></td>
+								</tr>
+								<tr>
+									<td>Requisiti</td>
 									<td><h:inputText a:type="text" class="form-control"
 											value="#{tipologiaEsameController.requisiti}" id="requisiti">
 										</h:inputText></td>
+								</tr>
+								<tr>
+									<td>Indicatore Risultati</td>
 									<td><h:inputText a:type="text" class="form-control"
 											value="#{tipologiaEsameController.indicatoreRisultati}"
 											id="indicatoreRisultati">
