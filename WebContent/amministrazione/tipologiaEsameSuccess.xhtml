@@ -20,36 +20,36 @@
 			<div class="container">
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
-					<div class="panel-heading">Dettagli Esame</div>
+					<div class="panel-heading">Inserimento Completato</div>
 					<div class="panel-body">
-						<p>Qui sono elencate tutte le informazioni riguardante l'esame
-							richiesto</p>
-					</div>
-					<div class="container">
+						<p>Inserimento completato. Qui verranno mostrati i dati della nuova Tipologia Esame.</p>
 						<!-- Table -->
 						<table class="table table-striped">
 							<tr>
-								<th>Nome:</th>
-								<th>${te.nome}</th>
+								<td>Nome:</td>
+								<td>${tipologiaEsameController.nome}</td>
 							</tr>
 							<tr>
-								<th>Descrizione:</th>
-								<th>${te.descrizione}</th>
+								<td>Descrizione:</td>
+								<td>${tipologiaEsameController.descrizione}</td>
 							</tr>
 							<tr>
-								<th>Prerequisiti:</th>
-								<th>${te.prerequisiti}</th>
+								<td>Prezzo:</td>
+								<td>${tipologiaEsameController.costo}</td>
 							</tr>
 							<tr>
-								<th>Indicatore Risultati:</th>
-								<th>${te.indicatoreRisultati}</th>
+								<td>Requisiti:</td>
+								<td>${tipologiaEsameController.requisiti}</td>
 							</tr>
 							<tr>
-								<th>Prezzo:</th>
-								<th>${te.costo}</th>
+								<td>Indicatore Risultati:</td>
+								<td>${tipologiaEsameController.indicatoreRisultati}</td>
 							</tr>
-
 						</table>
+
+					</div>
+					<div class="panel-footer">
+					<a href="/PortaleClinica/public/index.html" class="btn btn-default"> Continua </a>
 					</div>
 				</div>
 			</div>

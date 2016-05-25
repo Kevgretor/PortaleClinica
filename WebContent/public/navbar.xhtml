@@ -22,7 +22,12 @@
 							value="Tipologie Esami" /></li>
 					<li role="presentation"><h:commandLink
 							action="#{esameCreatorController.newEsame}"
-							rendered="#{login.loggedIn}" value="Prenota Esame" /></li>
+							rendered="#{login.loggedIn and login.userAdmin}"
+							value="Prenota Esame" /></li>
+					<li role="presentation"><h:link
+						a:href="/PortaleClinica/amministrazione/newTipologiaEsame.html"
+						rendered="#{login.loggedIn and login.userAdmin}">Inserisci
+							Tipologia Esame</h:link></li>
 
 
 				</ul>

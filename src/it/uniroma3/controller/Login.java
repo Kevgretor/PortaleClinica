@@ -49,9 +49,10 @@ public class Login implements Serializable {
 		if(utente.getPassword().equals(psw))
 		{
 			this.utente = utente;
+			this.role = utente.getRole();
 			HttpSession session = Util.getSession();
 	        session.setAttribute("username", username);
-	        session.setAttribute("role", utente.getRole());
+	        session.setAttribute("role", role);
 	        
 	        this.messaggio = null;
 	        
@@ -70,7 +71,15 @@ public class Login implements Serializable {
 
 	public boolean isLoggedIn() 
 	{
-		return utente != null;
+		return utente != null;	
+	}
+	
+	public boolean isUserAdmin() 
+	{
+		if(role==null)
+			return false;
+		
+		return role.equals("admin");
 	}
 
 	Utente getCurrentUser()

@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+>
+<h:head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<link rel="stylesheet" type="text/css"
+		href="/bootstrap/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:composition template="/layout.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<div class="panel panel-default">
+
+					<!-- Default panel contents -->
+					<div class="panel-heading">Inserimento nuova Tipologia Esame</div>
+
+					<h:form>
+						<div class="panel-body">
+							<p>Inserire il nome, la descrizione, il prezzo, i requistii
+								necessari e specificare il tipo di risultato del tipo di esame
+								da inserire.</p>
+							<!-- Table -->
+							<table class="table">
+								<tr>
+									<td>Nome</td>
+									<td>Descrizione</td>
+									<td>Prezzo</td>
+									<td>Requisiti</td>
+									<td>Indicatore Risultati</td>
+								</tr>
+								<tr>
+									<td><h:inputText a:type="text" class="form-control"
+											value="#{tipologiaEsameController.nome}" id="nome">
+										</h:inputText></td>
+									<td><h:inputText a:type="textarea" rows="3" class="form-control"
+											value="#{tipologiaEsameController.descrizione}"
+											id="descrizione">
+										</h:inputText></td>
+									<td><h:inputText a:type="text" class="form-control"
+											value="#{tipologiaEsameController.costo}" id="costo">
+										</h:inputText></td>
+									<td><h:inputText a:type="text" class="form-control"
+											value="#{tipologiaEsameController.requisiti}" id="requisiti">
+										</h:inputText></td>
+									<td><h:inputText a:type="text" class="form-control"
+											value="#{tipologiaEsameController.indicatoreRisultati}"
+											id="indicatoreRisultati">
+										</h:inputText></td>
+								</tr>
+							</table>
+						</div>
+						<div class="panel-footer">
+							<h:commandButton class="btn btn-primary" value="Invia"
+								action="#{tipologiaEsameController.createTipologiaEsame}"
+								style="margin-right: 7px !important;" />
+							<h:commandButton class="btn btn-default" value="Reset"
+								type="reset" />
+						</div>
+					</h:form>
+				</div>
+			</div>
+
+
+			<!-- MODAL -->
+			<div class="modal fade" tabindex="-1" role="dialog"
+				id="tipologiaEsameCreatorModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">Errore</h4>
+						</div>
+						<div class="modal-body">
+							<p>${tipologiaEsameController.messaggio}</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Chiudi</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+			<script type="text/javascript">
+				msg = "${tipologiaEsameController.messaggio}";
+				if (msg != "") {
+					$(window).load(function() {
+						$('#tipologiaEsameCreatorModal').modal('show');
+					});
+				}
+			</script>
+
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

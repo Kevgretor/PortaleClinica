@@ -31,12 +31,20 @@ public class TipologiaEsameController {
 	private TipologiaEsame te;
 	private List<TipologiaEsame> tesami;
 	
+	private String messaggio;
+	
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	
 	public String createTipologiaEsame() {
+		if(nome.equals("") || descrizione.equals("") || requisiti.equals("") || indicatoreRisultati.equals(""))
+		{
+			messaggio = "Tutti i campi sono obbligatori.";
+			return "";
+		}
 		this.te = tipologiaEsameFacade.createTipologiaEsame(nome, descrizione, costo, requisiti, indicatoreRisultati);
-		return "esame"; 
+		messaggio = "";
+		return "tipologiaEsameSuccess"; 
 	}
 	
 	public String findTipologiaEsame(Long id)
@@ -120,6 +128,14 @@ public class TipologiaEsameController {
 
 	public List<TipologiaEsame> getTesami() {
 		return tesami;
+	}
+
+	public String getMessaggio() {
+		return messaggio;
+	}
+
+	public void setMessaggio(String messaggio) {
+		this.messaggio = messaggio;
 	}
 
 	
