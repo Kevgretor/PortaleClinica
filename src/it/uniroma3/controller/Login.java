@@ -33,12 +33,17 @@ public class Login implements Serializable {
 	
 	public void login() 
 	{		
+		if(username.equals("") && password.equals(""))
+		{
+			messaggio = "Tutti i campi sono obbligatori";
+			return;
+		}
 		Utente utente = utenteFacade.getUtenteByUsername(username);
 		String psw = password;
 		password = null;
 		if(utente==null)
 		{
-			messaggio = "*username errato";
+			messaggio = "Username errata. Reinserire i dati e riprovare.";
 			return;
 		}
 		if(utente.getPassword().equals(psw))
@@ -52,7 +57,7 @@ public class Login implements Serializable {
 	        
 			return; // "index";
 		}
-		messaggio = "*password errata";
+		messaggio = "Password errata. Reinserire i dati e riprovare.";
 		//return "login";
 	}
 	public String logout() 

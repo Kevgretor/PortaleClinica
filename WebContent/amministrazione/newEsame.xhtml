@@ -19,55 +19,97 @@
 		<ui:define name="content">
 			<div class="container">
 				<div class="panel panel-default">
+
+					<!-- Default panel contents -->
+					<div class="panel-heading">Inserimento nuovo Esame</div>
+
 					<h:form>
-						<!-- Default panel contents -->
-						<div class="panel-heading">Inserimento nuovo Esame</div>
 						<div class="panel-body">
 							<p>Selezionare il paziente, il medico, il tipo di esame e la
 								data in cui verrà prenotato l'esame</p>
+							<!-- Table -->
+							<table class="table">
+								<tr>
+									<td>Paziente</td>
+									<td>Medico</td>
+									<td>Tipologia Esame</td>
+									<td>Data</td>
+								</tr>
+								<tr>
+									<td><h:selectOneMenu class="form-control" id="utente"
+											value="#{esameCreatorController.utente_id}">
+											<f:selectItems value="#{esameCreatorController.utenti}"
+												var="p" itemLabel="#{p.nome} #{p.cognome}"
+												itemValue="#{p.id}" />
+										</h:selectOneMenu></td>
+									<td><h:selectOneMenu class="form-control" id="medico"
+											value="#{esameCreatorController.medico_id}">
+											<f:selectItems value="#{esameCreatorController.medici}"
+												var="p" itemLabel="#{p.nome} #{p.cognome}"
+												itemValue="#{p.id}" />
+										</h:selectOneMenu></td>
+									<td><h:selectOneMenu class="form-control"
+											id="tipologiaEsame"
+											value="#{esameCreatorController.tipologiaEsame_id}">
+											<f:selectItems
+												value="#{esameCreatorController.tipologiaEsami}" var="p"
+												itemLabel="#{p.nome}" itemValue="#{p.id}" />
+										</h:selectOneMenu></td>
+									<td><h:inputText a:type="date" class="form-control"
+											value="#{esameCreatorController.dataEsame}" id="dataEsame"
+											a:placeholder="GG-MM-AAAA">
+											<f:convertDateTime pattern="yyyy-MM-dd" />
+										</h:inputText></td>
+								</tr>
+							</table>
 						</div>
-						<table class="table">
-							<tr>
-								<td>Paziente</td>
-								<td>Medico</td>
-								<td>Tipologia Esame</td>
-								<td>Data</td>
-							</tr>
-							<tr>
-								<td><h:selectOneMenu class="form-control" id="utente"
-										value="#{esameCreatorController.utente_id}">
-										<f:selectItems value="#{esameCreatorController.utenti}"
-											var="p" itemLabel="#{p.nome} #{p.cognome}"
-											itemValue="#{p.id}" />
-									</h:selectOneMenu></td>
-								<td><h:selectOneMenu class="form-control" id="medico"
-										value="#{esameCreatorController.medico_id}">
-										<f:selectItems value="#{esameCreatorController.medici}"
-											var="p" itemLabel="#{p.nome} #{p.cognome}"
-											itemValue="#{p.id}" />
-									</h:selectOneMenu></td>
-								<td><h:selectOneMenu class="form-control"
-										id="tipologiaEsame"
-										value="#{esameCreatorController.tipologiaEsame_id}">
-										<f:selectItems
-											value="#{esameCreatorController.tipologiaEsami}" var="p"
-											itemLabel="#{p.nome}" itemValue="#{p.id}" />
-									</h:selectOneMenu></td>
-								<td><h:inputText type="date" class="form-control"
-										value="#{esameCreatorController.dataEsame}" id="dataEsame"
-										a:placeholder="GG-MM-AAAA" a:data-fv-date="true"
-										a:data-fv-date-format="MM/DD/YYYY"
-										a:data-fv-date-message="The value is not a valid date">
-									</h:inputText></td>
-							</tr>
-						</table>
-						<div style="text-align: center;">
-							<h:commandButton class="btn btn-default" value="Invia"
-								action="#{esameCreatorController.createEsame}" />
+						<div class="panel-footer">
+							<h:commandButton class="btn btn-primary" value="Invia"
+								action="#{esameCreatorController.createEsame}"
+								style="margin-right: 7px !important;" />
+							<h:commandButton class="btn btn-default" value="Reset"
+								type="reset" />
 						</div>
 					</h:form>
 				</div>
 			</div>
+
+
+			<!-- MODAL -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="esameCreatorModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title">Errore</h4>
+						</div>
+						<div class="modal-body">
+							<p>${esameCreatorController.messaggio}</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Chiudi</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+
+			<script type="text/javascript">
+				msg = "${esameCreatorController.messaggio}";
+				if (msg != "") {
+					$(window).load(function() {
+						$('#esameCreatorModal').modal('show');
+					});
+				}
+			</script>
+
+
 		</ui:define>
 	</ui:composition>
 </h:body>

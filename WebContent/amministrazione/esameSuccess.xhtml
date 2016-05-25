@@ -20,36 +20,32 @@
 			<div class="container">
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
-					<div class="panel-heading">Tipologie di Esami</div>
+					<div class="panel-heading">Inserimento Completato</div>
 					<div class="panel-body">
-						<p>Qui sono elencati gli esami che forniamo attraverso la
-							nostra clinica. Per ottenere maggiori informazioni per ciascun
-							esame cliccare sul nome</p>
+						<p>Inserimento completato. Qui verranno mostrati i dati della prenotazione.</p>
 						<!-- Table -->
-						<h:form>
-							<table class="table table-striped">
-								<tr>
-									<td>ID</td>
-									<td>Nome</td>
-									<td>Prezzo</td>
-								</tr>
-								<ui:repeat var="te" value="#{tipologiaEsameController.tesami}">
-									<tr>
-										<td>${te.id}</td>
-										<td><h:commandLink
-												action="#{tipologiaEsameController.findTipologiaEsame(id)}"
-												value="#{te.nome}">
-
-											</h:commandLink></td>
-										<td>${te.costo} €</td>
-									</tr>
-								</ui:repeat>
-							</table>
-						</h:form>
+						<table class="table table-striped">
+							<tr>
+								<td>Medico:</td>
+								<td>${esameCreatorController.medico.cognome} ${esameCreatorController.medico.nome}</td>
+							</tr>
+							<tr>
+								<td>Paziente:</td>
+								<td>${esameCreatorController.utente.cognome} ${esameCreatorController.utente.nome}</td>
+							</tr>
+							<tr>
+								<td>Tipologia Esame:</td>
+								<td>${esameCreatorController.tipologiaEsame.nome}</td>
+							</tr>
+							<tr>
+								<td>Data Esame:</td>
+								<td>${esameCreatorController.dataEsame}</td>
+							</tr>
+						</table>
 
 					</div>
 					<div class="panel-footer">
-					<a href="index.html" class="btn btn-default"> Indietro </a>
+					<a href="/public/index.html" class="btn btn-default"> Continua </a>
 					</div>
 				</div>
 			</div>

@@ -12,20 +12,14 @@
 <h:body>
 	<div class="pull-right">
 		<h:form class="form-inline" rendered="#{!login.loggedIn}">
-			<h:outputLabel value="${login.messaggio}"
-				styleClass="control-label col-sm-2" />
 			<div class="form-group has-feedback">
 				<h:outputLabel class="sr-only" for="username">Username</h:outputLabel>
 				<h:inputText type="text" class="form-control"
-					value="#{login.username}" required="true"
-					requiredMessage="campo obbligatorio" id="username"
-					a:placeholder="Username" />
+					value="#{login.username}" id="username" a:placeholder="Username" />
 				<h:message for="username" />
 				<h:outputLabel class="sr-only" for="username">Password</h:outputLabel>
 				<h:inputSecret type="password" class="form-control"
-					value="#{login.password}" required="true"
-					requiredMessage="campo obbligatorio" id="password"
-					a:placeholder="Password" />
+					value="#{login.password}" id="password" a:placeholder="Password" />
 				<h:message for="password" />
 				<h:commandButton class="btn btn-default" action="#{login.login()}"
 					value="Accedi" />
@@ -33,11 +27,46 @@
 		</h:form>
 		<h:form class="form-inline" rendered="#{login.loggedIn}">
 			<div class="form-group">
-				<h:outputLabel styleClass="label label-default" style="margin-right: 7px !important;" >Benvenuto #{login.username}  </h:outputLabel>
+				<h:outputText style="margin-right: 7px !important;"
+					value="Benvenuto #{login.username}" />
 				<h:commandButton class="btn btn-default" action="#{login.logout}"
 					value="Esci" />
 			</div>
 		</h:form>
 	</div>
+
+	<!-- MODAL -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="loginModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Errore</h4>
+				</div>
+				<div class="modal-body">
+					<p>${login.messaggio}</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Chiudi</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<script type="text/javascript">
+		msg = "${login.messaggio}";
+		if (msg != "") {
+			$(window).load(function() {
+				$('#loginModal').modal('show');
+			});
+		}
+	</script>
+
 </h:body>
 </html>

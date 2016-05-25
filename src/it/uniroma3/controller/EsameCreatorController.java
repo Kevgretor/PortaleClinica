@@ -30,6 +30,8 @@ public class EsameCreatorController {
 	private TipologiaEsame tipologiaEsame;
 	private Date dataEsame;
 	
+	private String messaggio;
+	
 	private Long medico_id, utente_id, tipologiaEsame_id;
 	
 	@EJB
@@ -50,17 +52,29 @@ public class EsameCreatorController {
 	
 	public String createEsame() 
 	{
-		for (Utente u : utenti)
-			if(u.getId()==utente_id)
-				this.utente = u;
-		for(Medico m : medici)
-			if(m.getId()==medico_id)
-				this.medico = m;
-		for(TipologiaEsame te : tipologiaEsami)
-			if(te.getId()==tipologiaEsame_id)
-				this.tipologiaEsame = te;
+		try
+		{
+			for (Utente u : utenti)
+				if(u.getId()==utente_id)
+					this.utente = u;
+			for(Medico m : medici)
+				if(m.getId()==medico_id)
+					this.medico = m;
+			for(TipologiaEsame te : tipologiaEsami)
+				if(te.getId()==tipologiaEsame_id)
+					this.tipologiaEsame = te;
+		} catch (Exception e) {
+			messaggio = "Operazione fallita. Riprovare.";
+			return "";
+		}
+		if(dataEsame==null)
+		{
+			messaggio = "Tutti i campi sono obbligatori.";
+			return "";
+		}
 		esameFacade.createEsame(utente, medico, tipologiaEsame, dataEsame);
-		return "index";
+		messaggio = "";
+		return "esameSuccess";
 	}
 	
 	public void getObjectReferences()
@@ -154,6 +168,14 @@ public class EsameCreatorController {
 
 	public void setTipologiaEsame_id(Long tipologiaEsame_id) {
 		this.tipologiaEsame_id = tipologiaEsame_id;
+	}
+
+	public String getMessaggio() {
+		return messaggio;
+	}
+
+	public void setMessaggio(String messaggio) {
+		this.messaggio = messaggio;
 	}
 	
 	

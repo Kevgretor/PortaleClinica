@@ -27,11 +27,11 @@ import javax.persistence.TemporalType;
 	@SequenceGenerator(name="esame_id", sequenceName="esame_id", allocationSize=1)
 	private Long id;
 
-	@Column(name="data_esame")
+	@Column(name="data_esame", nullable=false)
 	@Temporal(TemporalType.DATE)
 	private Date dataEsame;
 
-	@Column(name="data_prenotazione")
+	@Column(name="data_prenotazione", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataPrenotazione;
 	
@@ -44,7 +44,7 @@ import javax.persistence.TemporalType;
 	private TipologiaEsame tipologiaEsame;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_paziente")
+	@JoinColumn(name = "id_paziente", nullable=false)
 	private Utente utente;
 	
 	public Esame() {
