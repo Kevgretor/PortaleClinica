@@ -11,58 +11,52 @@ import javax.faces.bean.ManagedProperty;
 
 @ManagedBean
 public class MedicoController {
-	
-	@ManagedProperty(value="#{param.id}")
+
+	@ManagedProperty(value = "#{param.id}")
 	private Long id;
 	private String nome;
 	private String cognome;
 	private String specializzazione;
 	private Medico medico;
 	private List<Medico> medici;
-	
+
 	@EJB
 	private MedicoFacade medicoFacade;
-	
+
 	public String createMedico() {
-		this.medico = medicoFacade.createMedico(nome, cognome, specializzazione);
-		return "medico"; 
+		this.medico = medicoFacade
+				.createMedico(nome, cognome, specializzazione);
+		return "medico";
 	}
-	
-	public String findMedico() 
-	{
+
+	public String findMedico() {
 		this.medico = medicoFacade.getMedico(id);
 		return "medico";
 	}
-	
-	public String findMedico(Long Id) 
-	{
+
+	public String findMedico(Long Id) {
 		this.medico = medicoFacade.getMedico(id);
 		return "medico";
 	}
-	
-	public String listMedici()
-	{
+
+	public String listMedici() {
 		this.medici = medicoFacade.getAllMedici();
 		return "/amministrazione/ricercaEsameDaMedico";
 	}
-	
-	public Long getId()
-	{
+
+	public Long getId() {
 		return id;
 	}
-	
-	public void setId(Long id)
-	{
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public String getNome()
-	{
+
+	public String getNome() {
 		return nome;
 	}
-	
-	public void setNome(String nome) 
-	{
+
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
@@ -95,77 +89,43 @@ public class MedicoController {
 	}
 
 	/*
-	public String listProducts() {
-		this.products = productFacade.getAllProducts();
-		return "products"; 
-	}
-
-	public String findProduct() {
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-	
-	public String findProduct(Long id) {
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Float getPrice() {
-		return price;
-	}
-
-	public void setPrice(Float price) {
-		this.price = price;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
-	*/
+	 * public String listProducts() { this.products =
+	 * productFacade.getAllProducts(); return "products"; }
+	 * 
+	 * public String findProduct() { this.product =
+	 * productFacade.getProduct(id); return "product"; }
+	 * 
+	 * public String findProduct(Long id) { this.product =
+	 * productFacade.getProduct(id); return "product"; }
+	 * 
+	 * public Long getId() { return id; }
+	 * 
+	 * public void setId(Long id) { this.id = id; }
+	 * 
+	 * public String getName() { return name; }
+	 * 
+	 * public void setName(String name) { this.name = name; }
+	 * 
+	 * public Float getPrice() { return price; }
+	 * 
+	 * public void setPrice(Float price) { this.price = price; }
+	 * 
+	 * public String getDescription() { return description; }
+	 * 
+	 * public void setDescription(String description) { this.description =
+	 * description; }
+	 * 
+	 * public String getCode() { return code; }
+	 * 
+	 * public void setCode(String code) { this.code = code; }
+	 * 
+	 * public Product getProduct() { return product; }
+	 * 
+	 * public void setProduct(Product product) { this.product = product; }
+	 * 
+	 * public List<Product> getProducts() { return products; }
+	 * 
+	 * public void setProducts(List<Product> products) { this.products =
+	 * products; }
+	 */
 }
-
-

@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.3
 -- Dumped by pg_dump version 9.5.3
 
--- Started on 2016-05-25 15:29:00
+-- Started on 2016-05-25 18:33:03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -184,6 +184,7 @@ ALTER TABLE utente_id OWNER TO postgres;
 --
 
 COPY esame (id_paziente, id_medico, data_prenotazione, data_esame, id, id_tipologiaesame) FROM stdin;
+2	1	2016-05-25 15:30:37	2016-05-28	2	1
 \.
 
 
@@ -193,7 +194,7 @@ COPY esame (id_paziente, id_medico, data_prenotazione, data_esame, id, id_tipolo
 -- Name: esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('esame_id', 1, true);
+SELECT pg_catalog.setval('esame_id', 2, true);
 
 
 --
@@ -205,6 +206,7 @@ SELECT pg_catalog.setval('esame_id', 1, true);
 COPY medico (id, nome, cognome, specializzazione) FROM stdin;
 1	Armando	Bianchi	Ortopedia
 2	Giuseppe	Adriani	Cardiologia
+3	Maria	Izzo	Urologia
 \.
 
 
@@ -214,7 +216,7 @@ COPY medico (id, nome, cognome, specializzazione) FROM stdin;
 -- Name: medico_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('medico_id', 2, true);
+SELECT pg_catalog.setval('medico_id', 3, true);
 
 
 --
@@ -236,6 +238,8 @@ COPY risultati_esame (id_esame, risultati) FROM stdin;
 COPY tipologia_di_esame (id, nome, descrizione, prerequisiti, indicatore_risultati, costo) FROM stdin;
 1	Emocromo	Esame emocromocitometrico.	digiuno 8	emoglobina, colesterolo	15.2399998
 2	Radiografia	Radiografia. Se richiesta dal medico curante verrà specificata la zona in sede di esame. Fondamentale per rivelare microlesioni dell'apparato scheletrico e altro.	nessuno	referto medico	29.5
+3	Elettrocardiogramma	Elettrocardiogramma sotto sforzo e a riposo. Utile per checkup annuali o per certificazioni agonistiche.	nessuno	referto medico	0
+4	Esame delle urine	insieme di esami di laboratorio che consente di analizzare le caratteristiche chimiche e fisiche delle urine e del relativo sedimento. Esso permette di individuare o sospettare condizioni patologiche dei reni o delle vie urinarie, oltre che diverse malattie sistemiche.	nessuno	glucosio mg/l , proteine mg/l 	22.5
 \.
 
 
@@ -245,7 +249,7 @@ COPY tipologia_di_esame (id, nome, descrizione, prerequisiti, indicatore_risulta
 -- Name: tipologia_esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('tipologia_esame_id', 2, true);
+SELECT pg_catalog.setval('tipologia_esame_id', 4, true);
 
 
 --
@@ -256,7 +260,9 @@ SELECT pg_catalog.setval('tipologia_esame_id', 2, true);
 
 COPY utente (nome, cognome, password, role, username, id) FROM stdin;
 Admin	Admin	admin	admin	admin	1
-Maria Rosaria	Rossi	pass	utente	maria.rosaria	2
+Maria Rosaria	Rossi	pass	paziente	maria.rosaria	2
+Antonio	Marioli	pass	paziente	antonio.marioli	3
+Stefania	Antonietti	pass	paziente	stefania.antonietti	4
 \.
 
 
@@ -266,7 +272,7 @@ Maria Rosaria	Rossi	pass	utente	maria.rosaria	2
 -- Name: utente_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('utente_id', 2, true);
+SELECT pg_catalog.setval('utente_id', 4, true);
 
 
 --
@@ -371,7 +377,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2016-05-25 15:29:00
+-- Completed on 2016-05-25 18:33:03
 
 --
 -- PostgreSQL database dump complete
