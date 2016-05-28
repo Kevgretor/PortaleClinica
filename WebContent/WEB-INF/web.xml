@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>PortaleClinica</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
-  
-  <context-param>
-        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-        <param-value>.xhtml</param-value>
-  </context-param>
-  
-  <!-- Facelets pages will use the .xhtml extension -->
- 
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-   <filter>
-  	<filter-name>AuthFilter</filter-name> <!-- mandatory -->
-  	<filter-class>it.uniroma3.servlet.AuthFilterServlet</filter-class> <!-- mandatory -->
-  </filter>
-  
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.html</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>PortaleClinica</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 
-   <filter-mapping>
-	    <filter-name>AuthFilter</filter-name>
-	    <url-pattern>/amministrazione/*</url-pattern>
-	</filter-mapping>
-	
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+
+	<!-- Facelets pages will use the .xhtml extension -->
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<filter>
+		<filter-name>AuthFilter</filter-name> <!-- mandatory -->
+		<filter-class>it.uniroma3.servlet.AuthFilterServlet</filter-class> <!-- mandatory -->
+	</filter>
+
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
 	<filter-mapping>
-	    <filter-name>AuthFilter</filter-name>
-	    <url-pattern>/utente/*</url-pattern>
+		<filter-name>AuthFilter</filter-name>
+		<url-pattern>/amministrazione/*</url-pattern>
 	</filter-mapping>
-	    
+
+	<filter-mapping>
+		<filter-name>AuthFilter</filter-name>
+		<url-pattern>/utente/*</url-pattern>
+	</filter-mapping>
+
 </web-app>

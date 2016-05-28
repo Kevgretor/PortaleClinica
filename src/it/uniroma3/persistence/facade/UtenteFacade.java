@@ -16,6 +16,8 @@ public class UtenteFacade {
 	@PersistenceContext(unitName = "clinica-unit")
 	private EntityManager em;
 
+	public UtenteFacade() { }
+	
 	public Utente createUtente(String nome, String cognome, String username,
 			String password, String role) {
 		Utente u = new Utente(nome, cognome, username, password, role);
