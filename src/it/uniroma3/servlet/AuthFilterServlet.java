@@ -28,7 +28,7 @@ public class AuthFilterServlet implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		try {
 
-			// check whether session variable is set
+			// Controlla se le variabili di sessione sono impostate
 			HttpServletRequest req = (HttpServletRequest) request;
 			HttpServletResponse res = (HttpServletResponse) response;
 			HttpSession ses = req.getSession(false);
@@ -79,7 +79,7 @@ public class AuthFilterServlet implements Filter {
 		} catch (Throwable t) {
 			System.out.println(t.getMessage());
 		}
-	} // doFilter
+	}
 
 	@Override
 	public void destroy() {

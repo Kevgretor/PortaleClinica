@@ -1,15 +1,13 @@
 package it.uniroma3.persistence.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Column;
 import javax.persistence.SequenceGenerator;
 
 	@Entity
-	@NamedQuery(name = "findAllMedici", query = "SELECT m FROM Medico m")
 	public class Medico {
         
 	@Id
@@ -73,16 +71,16 @@ import javax.persistence.SequenceGenerator;
     public int hashCode() {
          return this.getId().hashCode();
     }
-/*
+
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("Medico"); 
         sb.append("{id=").append(id); 
-        sb.append(", name='").append(nome); 
+        sb.append(", nome='").append(nome); 
         sb.append(", cognome=").append(cognome); 
         sb.append(", specializzazione='").append(specializzazione); 
         sb.append("}\n");
         return sb.toString();
-    }*/
+    }
 	
 }

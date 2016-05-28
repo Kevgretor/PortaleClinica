@@ -109,10 +109,12 @@ import javax.persistence.TemporalType;
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("Esame"); 
-        sb.append("{id=").append(id);
-        sb.append("{paziente=").append(utente.toString());
-        sb.append("{medico=").append(medico.toString());
-        sb.append("{data esame=").append(dataEsame.toString());
+        sb.append(", id=").append(id);
+        sb.append(", paziente=").append(utente.toString());
+        sb.append(", medico=").append(medico.toString());
+        sb.append(", data esame=").append(dataEsame.toString());
+        sb.append(", data prenotazione=").append(dataPrenotazione.toString());
+        sb.append(", tipologia esame=").append(tipologiaEsame.toString());
         sb.append("}\n");
         return sb.toString();
     }

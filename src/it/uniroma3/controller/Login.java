@@ -6,12 +6,9 @@ import it.uniroma3.persistence.model.Utente;
 
 import java.io.Serializable;
 
-
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 @ManagedBean
