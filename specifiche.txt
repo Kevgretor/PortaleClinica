@@ -1,0 +1,38 @@
+Caso d'uso UC1: consulta offerta
+-Attore primario: utente non registrato
+-Scenario principale di successo:
+1)L'utente accede alla homepage
+2)L'utente seleziona l'opzione "Tipologie Esami"
+3)Il sistema visualizza una lista delle Tipologie di Esami mostrando codice identificatore, nome e prezzo
+4)L'utente seleziona una Tipologia di Esame specifica
+5)Il sistema visualizza una tabella mostrando Nome, Descrizione, Prerequisiti, Indicatore Risultati e Prezzo
+6)L'utente ripete i passi 4-6 un numero indefinito di volte
+
+Caso d'uso UC2: crea esame (prenotazione)
+-Attore primario: amministrazione
+-Scenario principale di successo:
+-Prerequisiti: l'amministratore è identificato e autenticato
+1)L'amministratore seleziona l'opzione "Prenota Esame
+2)Il sistema visualizza i pazienti, i medici e le tipologie di esame disponibili
+3)L'amministratore inserisce il paziente, il medico, la tipologia di esame e la data dell'esame
+4)Il sistema memorizza il nuovo esame includendo l'ora e la data in cui è stato memorizzato e mostra una schermata di riepilogo all'amministratore
+
+Caso d'uso UC4: inserimento tipologia di esame
+-Attore primario: amministrazione
+-Scenario principale di successo:
+-Prerequisiti: l'amministratore è identificato e autenticato
+1)L'amministratore seleziona l'opzione "Inserisci Tipologia Esame"
+2)L'amministratore inserisce nome, descrizione, prezzo, requisiti e indicatore risultati della tipologia di esame da inserire
+3)Il sistema registra la nuova tipologia di esame, e mostra all'amministratore un riepilogo dei dati appena inseriti
+4)L'amministratore ripete i passi 1-3 un numero indefinito di volte
+
+Caso d'uso UC5: esami effettuati da un medico
+-Attore primario: amministrazione
+-Scenario principale di successo:
+-Prerequisiti: l'amministratore è identificato e autenticato
+1)L'amministratore seleziona l'opzione "Ricerca esami di un medico"
+2)Il sistema mostra un elenco di tutti i medici disponibili
+3)L'amministratore inserisce un medico
+4)Il sistema mostra una lista con tutti gli esami prenotati e associati al medico mostrando il codice, il paziente, la tipologia di esame, la data, la data di prenotazione di ciascun esame
+5)L'amministratore ripete i passi 1-4 un numero indefinito di volte
+

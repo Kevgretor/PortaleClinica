@@ -1,0 +1,17 @@
+Progetto SIW-Luglio-2016
+Implementati casi d'uso 1-2-4-5
+Studenti: Rizzo Gianluca 450733
+Progetto: AVANZATO
+
+Il seguente progetto implementa le seguenti tecnologie:
+-JPA v2.1 attraverso Hibernate v.5.1.0
+-CSS attraverso Bootstrap v3.3.6
+-JavaEE v7
+-JSF attraverso Mojarra v2.2
+
+Il sistema è stato testato sul container TomEE v1.7.4
+
+Plus:
+-Il seguente progetto è stato configurato su AWS ed è disponibile al seguente indirizzo:
+ http://ec2-52-35-144-146.us-west-2.compute.amazonaws.com:8080/PortaleClinica/
+-E' stato utilizzato Javascript per le finestre dei messaggi di errore e per la visualizzazione della valuta in modo corretto (es: il sistema memorizza 2.4€, il sistema lo mostra in 2.40€)
