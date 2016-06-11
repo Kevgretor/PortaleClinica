@@ -47,10 +47,9 @@ public class Login implements Serializable {
 
 			this.messaggio = null;
 
-			return; // "index";
+			return;
 		}
 		messaggio = "Password errata. Reinserire i dati e riprovare.";
-		// return "login";
 	}
 
 	public String logout() {
@@ -76,10 +75,6 @@ public class Login implements Serializable {
 		return utente;
 	}
 
-	/*
-	 * public Long getId() { return id; } public void setId(Long id) { this.id =
-	 * id; }
-	 */
 	public Utente getUtente() {
 		return utente;
 	}
