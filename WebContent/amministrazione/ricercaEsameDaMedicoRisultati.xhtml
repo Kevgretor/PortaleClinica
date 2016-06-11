@@ -21,7 +21,7 @@
 				<div class="panel panel-default">
 					<!-- Default panel contents -->
 					<div class="panel-heading">Esami effettuati da
-						${medicoController.medici[esameCreatorController.id].nome}</div>
+						${medicoController.medici[esameController.id].nome}</div>
 					<div class="panel-body">
 						<p>Qui sono elencati gli esami che forniamo attraverso la
 							nostra clinica. Per ottenere maggiori informazioni per ciascun
@@ -35,7 +35,7 @@
 								<td>Data Esame</td>
 								<td>Data Prenotazione</td>
 							</tr>
-							<ui:repeat var="e" value="#{esameCreatorController.esami}">
+							<ui:repeat var="e" value="#{esameController.esami}">
 								<tr>
 									<td>${e.id}</td>
 									<td>${e.utente.nome} ${e.utente.cognome}</td>
@@ -52,7 +52,7 @@
 					</div>
 					<div class="panel-footer">
 						<h:form>
-							<h:commandButton action="#{esameCreatorController.getAllMedici}"
+							<h:commandButton action="#{esameController.getAllMedici}"
 								class="btn btn-default" value="Indietro" />
 						</h:form>
 					</div>

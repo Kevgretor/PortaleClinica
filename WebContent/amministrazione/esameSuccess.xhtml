@@ -27,19 +27,19 @@
 						<table class="table table-striped">
 							<tr>
 								<td>Medico:</td>
-								<td>${esameCreatorController.medico.cognome} ${esameCreatorController.medico.nome}</td>
+								<td>${esameController.medico.cognome} ${esameController.medico.nome}</td>
 							</tr>
 							<tr>
 								<td>Paziente:</td>
-								<td>${esameCreatorController.utente.cognome} ${esameCreatorController.utente.nome}</td>
+								<td>${esameController.utente.cognome} ${esameController.utente.nome}</td>
 							</tr>
 							<tr>
 								<td>Tipologia Esame:</td>
-								<td>${esameCreatorController.tipologiaEsame.nome}</td>
+								<td>${esameController.tipologiaEsame.nome}</td>
 							</tr>
 							<tr>
 								<td>Data Esame:</td>
-								<td><h:outputText value="#{esameCreatorController.dataEsame}">
+								<td><h:outputText value="#{esameController.dataEsame}">
 											<f:convertDateTime type="dataEsame" pattern="dd-MM-yyyy" />
 										</h:outputText></td>
 							</tr>

@@ -35,7 +35,7 @@
 							</tr>
 							<tr>
 								<td>Prezzo:</td>
-								<td>${tipologiaEsameController.costo}</td>
+								<td><p id="prezzo"></p></td>
 							</tr>
 							<tr>
 								<td>Requisiti:</td>
@@ -53,6 +53,21 @@
 					</div>
 				</div>
 			</div>
+			
+			<script type="text/javascript">
+				costo = "${te.costo}";
+				decimali = costo.substring(costo.indexOf(".") + 1);
+				if (decimali.length == 1) {
+
+					costo = costo.concat("0");
+				}
+				if (decimali.length == 0) {
+
+					costo = costo.concat("00");
+				}
+				document.getElementById("prezzo").innerHTML = costo + " €";
+			</script>
+			
 		</ui:define>
 	</ui:composition>
 </h:body>

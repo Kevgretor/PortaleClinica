@@ -37,12 +37,7 @@ public class TipologiaEsameController {
 		}
 		this.te = tipologiaEsameFacade.createTipologiaEsame(nome, descrizione,
 				costo, requisiti, indicatoreRisultati);
-		nome = "";
-		descrizione = "";
-		costo = 0f;
-		requisiti = "";
-		indicatoreRisultati = "";
-
+		
 		messaggio = "";
 		return "tipologiaEsameSuccess";
 	}
@@ -56,7 +51,7 @@ public class TipologiaEsameController {
 		this.tesami = tipologiaEsameFacade.getAllTipologiaEsame();
 		return "/public/tipologiaEsameList";
 	}
-
+	
 	public Long getId() {
 		return id;
 	}

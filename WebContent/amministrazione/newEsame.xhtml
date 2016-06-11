@@ -37,26 +37,26 @@
 								</tr>
 								<tr>
 									<td><h:selectOneMenu class="form-control" id="utente"
-											value="#{esameCreatorController.utente_id}">
-											<f:selectItems value="#{esameCreatorController.utenti}"
+											value="#{esameController.utente_id}">
+											<f:selectItems value="#{esameController.utenti}"
 												var="p" itemLabel="#{p.nome} #{p.cognome}"
 												itemValue="#{p.id}" />
 										</h:selectOneMenu></td>
 									<td><h:selectOneMenu class="form-control" id="medico"
-											value="#{esameCreatorController.medico_id}">
-											<f:selectItems value="#{esameCreatorController.medici}"
+											value="#{esameController.medico_id}">
+											<f:selectItems value="#{esameController.medici}"
 												var="p" itemLabel="#{p.nome} #{p.cognome}"
 												itemValue="#{p.id}" />
 										</h:selectOneMenu></td>
 									<td><h:selectOneMenu class="form-control"
 											id="tipologiaEsame"
-											value="#{esameCreatorController.tipologiaEsame_id}">
+											value="#{esameController.tipologiaEsame_id}">
 											<f:selectItems
-												value="#{esameCreatorController.tipologiaEsami}" var="p"
+												value="#{esameController.tipologiaEsami}" var="p"
 												itemLabel="#{p.nome}" itemValue="#{p.id}" />
 										</h:selectOneMenu></td>
 									<td><h:inputText a:type="date" class="form-control"
-											value="#{esameCreatorController.dataEsame}" id="dataEsame"
+											value="#{esameController.dataEsame}" id="dataEsame"
 											a:placeholder="GG-MM-AAAA">
 											<f:convertDateTime pattern="yyyy-MM-dd" />
 										</h:inputText></td>
@@ -65,7 +65,7 @@
 						</div>
 						<div class="panel-footer">
 							<h:commandButton class="btn btn-primary" value="Invia"
-								action="#{esameCreatorController.createEsame}"
+								action="#{esameController.createEsame}"
 								style="margin-right: 7px !important;" />
 							<h:commandButton class="btn btn-default" value="Reset"
 								type="reset" />
@@ -87,7 +87,7 @@
 							<h4 class="modal-title">Errore</h4>
 						</div>
 						<div class="modal-body">
-							<p>${esameCreatorController.messaggio}</p>
+							<p>${esameController.messaggio}</p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary"
@@ -101,7 +101,7 @@
 			<!-- /.modal -->
 
 			<script type="text/javascript">
-				msg = "${esameCreatorController.messaggio}";
+				msg = "${esameController.messaggio}";
 				if (msg != "") {
 					$(window).load(function() {
 						$('#esameCreatorModal').modal('show');

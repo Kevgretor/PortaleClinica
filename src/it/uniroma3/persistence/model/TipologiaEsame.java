@@ -87,6 +87,23 @@ public class TipologiaEsame {
 	public void setIndicatoreRisultati(String indicatoreRisultati) {
 		this.indicatoreRisultati = indicatoreRisultati;
 	}
+	
+
+	public String getcostoParsedToString()
+	{
+		String costo = String.valueOf(this.costo);
+		String decimali = costo.substring(costo.indexOf(".") + 1);
+		if (decimali.length() == 1) {
+
+			costo = costo.concat("0");
+		}
+		if (decimali.length() == 0) {
+
+			costo = costo.concat("00");
+		}
+		return costo;
+	}
+
 
 	public boolean equals(Object obj) {
 		TipologiaEsame te = (TipologiaEsame) obj;

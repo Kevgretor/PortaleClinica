@@ -29,7 +29,7 @@
 						</a>
 							<ul class="dropdown-menu">
 								<li role="presentation"><h:commandLink
-										action="#{esameCreatorController.newEsame}"
+										action="#{esameController.newEsame}"
 										rendered="#{login.loggedIn and login.userAdmin}"
 										value="Prenota Esame" /></li>
 								<li role="presentation"><h:link
@@ -37,7 +37,7 @@
 										rendered="#{login.loggedIn and login.userAdmin}">Inserisci
 							Tipologia Esame</h:link></li>
 								<li role="presentation"><h:commandLink
-										action="#{esameCreatorController.getAllMedici}"
+										action="#{esameController.getAllMedici}"
 										rendered="#{login.loggedIn and login.userAdmin}"
 										value="Ricerca esami di un Medico" /></li>
 							</ul></li>

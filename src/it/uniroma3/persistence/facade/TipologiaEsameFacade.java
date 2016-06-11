@@ -21,7 +21,7 @@ public class TipologiaEsameFacade {
 		em.persist(m);
 		return m;
 	}
-	
+
 	public TipologiaEsame getTipologiaEsame(Long id)
 	{
 		TipologiaEsame te = em.find(TipologiaEsame.class, id);

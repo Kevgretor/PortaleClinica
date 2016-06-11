@@ -28,15 +28,15 @@
 								si vuole visualizzare tale informazione.</p>
 							<!-- Table -->
 							<h:selectOneMenu class="form-control" id="medico_id"
-								value="#{esameCreatorController.medico_id}">
-								<f:selectItems value="#{esameCreatorController.medici}" var="m"
+								value="#{esameController.medico_id}">
+								<f:selectItems value="#{esameController.medici}" var="m"
 									itemLabel="#{m.nome} #{m.cognome}" itemValue="#{m.id}" />
 							</h:selectOneMenu>
 						</div>
 
 						<div class="panel-footer">
 							<h:commandButton class="btn btn-primary" value="Invia"
-								action="#{esameCreatorController.getEsamiByMedico}"
+								action="#{esameController.getEsamiByMedico}"
 								style="margin-right: 7px !important;" />
 
 							<a href="/PortaleClinica/public/index.html"
