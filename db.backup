@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.3
 -- Dumped by pg_dump version 9.5.3
 
--- Started on 2016-06-11 16:51:56
+-- Started on 2016-06-15 16:19:51
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2169 (class 0 OID 0)
+-- TOC entry 2168 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -107,8 +107,7 @@ ALTER TABLE medico_id OWNER TO postgres;
 --
 
 CREATE TABLE risultato_esame (
-    id bigint NOT NULL,
-    risultato_riga bigint
+    id bigint NOT NULL
 );
 
 
@@ -223,7 +222,7 @@ CREATE SEQUENCE utente_id
 ALTER TABLE utente_id OWNER TO postgres;
 
 --
--- TOC entry 2157 (class 0 OID 16437)
+-- TOC entry 2156 (class 0 OID 16437)
 -- Dependencies: 188
 -- Data for Name: esame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -237,7 +236,7 @@ COPY esame (id_paziente, id_medico, data_prenotazione, data_esame, id, id_tipolo
 
 
 --
--- TOC entry 2170 (class 0 OID 0)
+-- TOC entry 2169 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -246,7 +245,7 @@ SELECT pg_catalog.setval('esame_id', 4, true);
 
 
 --
--- TOC entry 2154 (class 0 OID 16417)
+-- TOC entry 2153 (class 0 OID 16417)
 -- Dependencies: 185
 -- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -259,7 +258,7 @@ COPY medico (id, nome, cognome, specializzazione) FROM stdin;
 
 
 --
--- TOC entry 2171 (class 0 OID 0)
+-- TOC entry 2170 (class 0 OID 0)
 -- Dependencies: 184
 -- Name: medico_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -268,17 +267,17 @@ SELECT pg_catalog.setval('medico_id', 3, true);
 
 
 --
--- TOC entry 2158 (class 0 OID 16452)
+-- TOC entry 2157 (class 0 OID 16452)
 -- Dependencies: 189
 -- Data for Name: risultato_esame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY risultato_esame (id, risultato_riga) FROM stdin;
+COPY risultato_esame (id) FROM stdin;
 \.
 
 
 --
--- TOC entry 2172 (class 0 OID 0)
+-- TOC entry 2171 (class 0 OID 0)
 -- Dependencies: 190
 -- Name: risultato_esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -287,7 +286,7 @@ SELECT pg_catalog.setval('risultato_esame_id', 1, false);
 
 
 --
--- TOC entry 2161 (class 0 OID 24715)
+-- TOC entry 2160 (class 0 OID 24715)
 -- Dependencies: 192
 -- Data for Name: risultato_esame_riga; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -297,7 +296,7 @@ COPY risultato_esame_riga (id, valore, id_esame) FROM stdin;
 
 
 --
--- TOC entry 2173 (class 0 OID 0)
+-- TOC entry 2172 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: risultato_esame_riga_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -306,7 +305,7 @@ SELECT pg_catalog.setval('risultato_esame_riga_id', 1, false);
 
 
 --
--- TOC entry 2155 (class 0 OID 16427)
+-- TOC entry 2154 (class 0 OID 16427)
 -- Dependencies: 186
 -- Data for Name: tipologia_di_esame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -323,7 +322,7 @@ COPY tipologia_di_esame (id, nome, descrizione, prerequisiti, indicatore_risulta
 
 
 --
--- TOC entry 2174 (class 0 OID 0)
+-- TOC entry 2173 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: tipologia_esame_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -332,7 +331,7 @@ SELECT pg_catalog.setval('tipologia_esame_id', 7, true);
 
 
 --
--- TOC entry 2152 (class 0 OID 16399)
+-- TOC entry 2151 (class 0 OID 16399)
 -- Dependencies: 183
 -- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -346,7 +345,7 @@ Stefania	Antonietti	pass	paziente	stefania.antonietti	4
 
 
 --
--- TOC entry 2175 (class 0 OID 0)
+-- TOC entry 2174 (class 0 OID 0)
 -- Dependencies: 182
 -- Name: utente_id; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -454,7 +453,7 @@ ALTER TABLE ONLY esame
 
 
 --
--- TOC entry 2035 (class 2606 OID 24733)
+-- TOC entry 2034 (class 2606 OID 24733)
 -- Name: risultato_esame_riga_id_esame_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -463,16 +462,7 @@ ALTER TABLE ONLY risultato_esame_riga
 
 
 --
--- TOC entry 2034 (class 2606 OID 24728)
--- Name: risultato_esame_risultato_riga_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY risultato_esame
-    ADD CONSTRAINT risultato_esame_risultato_riga_fkey FOREIGN KEY (risultato_riga) REFERENCES risultato_esame_riga(id);
-
-
---
--- TOC entry 2168 (class 0 OID 0)
+-- TOC entry 2167 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -483,7 +473,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2016-06-11 16:51:57
+-- Completed on 2016-06-15 16:19:51
 
 --
 -- PostgreSQL database dump complete

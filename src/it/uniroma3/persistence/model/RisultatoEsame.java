@@ -18,8 +18,8 @@ public class RisultatoEsame {
 	@SequenceGenerator(name = "risultato_esame_id", sequenceName = "risultato_esame_id", allocationSize = 1)
 	private Long id;
 	
-	@OneToMany(mappedBy = "risultato_esame")
-	@JoinColumn(name = "risultato_esame_riga", nullable = false)
+	@OneToMany
+	@JoinColumn(name = "risultato_esame_id")
 	private List<RisultatoEsameRiga> risultatoEsameRighe;
 
 	public RisultatoEsame() {

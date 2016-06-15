@@ -24,7 +24,6 @@ public class RisultatoEsameRiga {
 	private String valore;
 	
 	@ManyToOne
-	@JoinColumn(name = "risultato_esame", nullable = false)
 	private RisultatoEsame risultatoEsame;
 	
 	public RisultatoEsameRiga() {
